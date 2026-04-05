@@ -86,7 +86,7 @@ export default function SimuladorForm({ fields, onCalculate, submitLabel = 'Calc
         {fields.map(field => (
           <div key={field.id} className="flex flex-col gap-1">
             {/* Label + botón hintAction (si aplica) */}
-            <div className="flex items-center justify-between gap-2 min-h-[1.5rem]">
+            <div className="flex items-center justify-between gap-2 min-h-[1.5rem] flex-wrap">
               <label className="text-sm font-medium text-slate-600">{field.label}</label>
               {field.hintAction && (
                 <button

@@ -44,11 +44,15 @@ export default function ComparadorRendimiento() {
       .then(r => r.json())
       .then(data => {
         const live = {}
+        const hoy = new Date()
         data.forEach(item => {
           const id = OTROS_MAP[item.fondo]
-          if (id && item.tna > 0) {
-            live[id] = Math.round(item.tna * 10000) / 100  // 0.23 → 23.00
-          }
+          if (!id || !(item.tna > 0)) return
+          const diasStale = item.fecha
+            ? Math.round((hoy - new Date(item.fecha)) / 86400000)
+            : 999
+          if (diasStale > 30) return  // dato viejo — cae al fallback JSON
+          live[id] = Math.round(item.tna * 10000) / 100  // 0.23 → 23.00
         })
         return live
       })

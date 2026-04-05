@@ -79,7 +79,7 @@ export default function Descargables() {
         <div className="mt-8 bg-white rounded-2xl border border-slate-100 p-6 text-center">
           <p className="text-sm text-slate-500">
             💡 <strong>¿Querés más plantillas?</strong> Estamos trabajando en nuevas herramientas.
-            Escribinos a <a href="mailto:hola@plataclara.ar" className="text-primary-500 hover:underline">hola@plataclara.ar</a> con tu sugerencia.
+            Escribinos a <a href="mailto:hola.plataclara@gmail.com" className="text-primary-500 hover:underline">hola.plataclara@gmail.com</a> con tu sugerencia.
           </p>
         </div>
       </div>

@@ -7,7 +7,7 @@ export default function QuienesSomos() {
   function handleEnviar(e) {
     e.preventDefault()
     if (!mensaje.trim()) return
-    window.location.href = `mailto:hola@plataclara.ar?subject=Mensaje desde PlataClara&body=${encodeURIComponent(mensaje)}`
+    window.location.href = `mailto:hola.plataclara@gmail.com?subject=Mensaje desde PlataClara&body=${encodeURIComponent(mensaje)}`
     setEnviado(true)
     setMensaje('')
   }
