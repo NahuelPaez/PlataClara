@@ -71,12 +71,13 @@ export default function ComparadorRendimiento() {
           const u = ultimo.find(d => d.fondo === nombre)
           const p = penultimo.find(d => d.fondo === nombre)
           if (u?.vcp && p?.vcp && p.vcp > 0) {
-            // Usar días reales entre fechas para evitar distorsión por fines de semana
+            // Misma fórmula que comparatasas: TNA lineal con días reales
             const days = u.fecha && p.fecha
               ? Math.max(1, Math.round(Math.abs(new Date(u.fecha) - new Date(p.fecha)) / 86400000))
               : 1
-            const tna = ((u.vcp / p.vcp) ** (365 / days) - 1) * 100
-            if (tna > 5 && tna < 200) live[id] = Math.round(tna * 100) / 100
+            const n = (u.vcp - p.vcp) / p.vcp / days
+            const tna = n * 365 * 100
+            if (tna > 5 && tna < 100) live[id] = Math.round(tna * 100) / 100
           }
         })
         return live
