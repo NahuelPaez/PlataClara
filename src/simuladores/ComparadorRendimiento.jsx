@@ -14,7 +14,6 @@ const OTROS_MAP = {
   'CARREFOUR BANCO':'carrefour',
   'FIWIND':         'fiwind',
   'UALA':           'uala',
-  'BRUBANK':        'brubank',
   'SUPERVIELLE':    'supervielle',
 }
 
@@ -59,7 +58,6 @@ export default function ComparadorRendimiento() {
     const MDINERO_MAP = {
       'Fima Premium - Clase A':   'galicia',
       'Super Ahorro $ - Clase A': 'santander',
-      'Mercado Fondo - Clase A':  'mercadopago',
     }
     const fetchMD = Promise.all([
       fetch('https://api.argentinadatos.com/v1/finanzas/fci/mercadoDinero/ultimo').then(r => r.json()),
