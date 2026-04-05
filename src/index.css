@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: #fafaf9;
+    color: #1e293b;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary-500 hover:bg-primary-600 active:bg-primary-700 text-white font-semibold px-5 py-2.5 rounded-xl transition-colors duration-200 cursor-pointer;
+  }
+  .btn-secondary {
+    @apply bg-white hover:bg-slate-50 text-primary-600 font-semibold px-5 py-2.5 rounded-xl border border-primary-200 transition-colors duration-200 cursor-pointer;
+  }
+  .btn-accent {
+    @apply bg-accent hover:bg-accent-dark text-white font-semibold px-5 py-2.5 rounded-xl transition-colors duration-200 cursor-pointer;
+  }
+  .card {
+    @apply bg-white rounded-2xl shadow-sm border border-slate-100 p-6;
+  }
+  .input-field {
+    @apply w-full border border-slate-200 rounded-xl px-4 py-2.5 text-slate-800 bg-white focus:outline-none focus:ring-2 focus:ring-primary-400 focus:border-transparent transition-all text-sm;
+  }
+  .section-wrapper {
+    @apply py-16 px-4 max-w-6xl mx-auto;
+  }
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold text-slate-800 mb-3;
+  }
+  .section-subtitle {
+    @apply text-base md:text-lg text-slate-500 mb-10 max-w-2xl;
+  }
+  .tab-active {
+    @apply bg-primary-500 text-white shadow-sm;
+  }
+  .tab-inactive {
+    @apply bg-white text-slate-600 border border-slate-200 hover:border-primary-300 hover:text-primary-600;
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "lastUpdated": "2026-04-03",
+  "nota": "Tasas referenciales actualizadas manualmente. Verificar en el sitio oficial de cada entidad antes de operar.",
+  "entidades": [
+    {
+      "id": "mercadopago",
+      "nombre": "Mercado Pago",
+      "tipo": "billetera",
+      "emoji": "💙",
+      "productos": [
+        { "id": "cuenta_remunerada", "nombre": "Cuenta Remunerada", "tna": 21.3, "tea": null, "moneda": "ARS", "plazo_min": 1, "plazo_max": 1, "notas": "" },
+        { "id": "fci_mm", "nombre": "FCI Money Market (MAF)", "tna": 23.5, "tea": null, "moneda": "ARS", "plazo_min": 1, "plazo_max": 1, "notas": "Liquidez inmediata (mismo día)" }
+      ]
+    },
+    {
+      "id": "uala",
+      "nombre": "Ualá",
+      "tipo": "billetera",
+      "emoji": "🟣",
+      "productos": [
+        { "id": "cuenta_remunerada", "nombre": "Cuenta Remunerada", "tna": 23.0, "tea": null, "moneda": "ARS", "plazo_min": 1, "plazo_max": 1, "notas": "Tasa Plus: hasta 29% TNA con uso activo" },
+        { "id": "plazo_fijo_30", "nombre": "Plazo Fijo 30 días", "tna": 25.0, "tea": null, "moneda": "ARS", "plazo_min": 30, "plazo_max": 30, "notas": "Desde $1.000" },
+        { "id": "plazo_fijo_60", "nombre": "Plazo Fijo 60 días", "tna": 24.5, "tea": null, "moneda": "ARS", "plazo_min": 60, "plazo_max": 60, "notas": "" },
+        { "id": "fci_mm", "nombre": "FCI Money Market", "tna": 24.5, "tea": null, "moneda": "ARS", "plazo_min": 1, "plazo_max": 1, "notas": "Ualá Bienestar — disponible al día hábil siguiente" }
+      ]
+    },
+    {
+      "id": "brubank",
+      "nombre": "Brubank",
+      "tipo": "banco",
+      "emoji": "🔵",
+      "productos": [
+        { "id": "cuenta_remunerada", "nombre": "Cuenta Remunerada", "tna": 21.0, "tea": null, "moneda": "ARS", "plazo_min": 1, "plazo_max": 1, "notas": "" },
+        { "id": "plazo_fijo_30", "nombre": "Plazo Fijo 30 días", "tna": 22.0, "tea": null, "moneda": "ARS", "plazo_min": 30, "plazo_max": 30, "notas": "Desde $1.000" },
+        { "id": "plazo_fijo_60", "nombre": "Plazo Fijo 60 días", "tna": 22.5, "tea": null, "moneda": "ARS", "plazo_min": 60, "plazo_max": 60, "notas": "" },
+        { "id": "plazo_fijo_uva", "nombre": "Plazo Fijo UVA", "tna": null, "tea": null, "moneda": "ARS", "plazo_min": 90, "plazo_max": 365, "notas": "CER + 1%" },
+        { "id": "fci_mm", "nombre": "FCI Money Market", "tna": 23.0, "tea": null, "moneda": "ARS", "plazo_min": 1, "plazo_max": 1, "notas": "Disponible el mismo día" }
+      ]
+    },
+    {
+      "id": "naranjax",
+      "nombre": "Naranja X",
+      "tipo": "billetera",
+      "emoji": "🟠",
+      "productos": [
+        { "id": "cuenta_remunerada", "nombre": "Cuenta Remunerada", "tna": 21.0, "tea": null, "moneda": "ARS", "plazo_min": 1, "plazo_max": 1, "notas": "Tope de $1.000.000" },
+        { "id": "fci_mm", "nombre": "FCI Money Market", "tna": 23.0, "tea": null, "moneda": "ARS", "plazo_min": 1, "plazo_max": 1, "notas": "Disponible el mismo día" }
+      ]
+    },
+    {
+      "id": "lemon",
+      "nombre": "Lemon",
+      "tipo": "billetera",
+      "emoji": "🍋",
+      "productos": [
+        { "id": "cuenta_remunerada", "nombre": "Cuenta Remunerada", "tna": 20.0, "tea": null, "moneda": "ARS", "plazo_min": 1, "plazo_max": 1, "notas": "" },
+        { "id": "fci_mm", "nombre": "FCI Money Market", "tna": 22.0, "tea": null, "moneda": "ARS", "plazo_min": 1, "plazo_max": 1, "notas": "Fondo Lemon Cash" }
+      ]
+    },
+    {
+      "id": "carrefour",
+      "nombre": "Carrefour Banco",
+      "tipo": "billetera",
+      "emoji": "🛒",
+      "productos": [
+        { "id": "cuenta_remunerada", "nombre": "Cuenta Remunerada", "tna": 26.0, "tea": null, "moneda": "ARS", "plazo_min": 1, "plazo_max": 1, "notas": "Tope de $4.200.000" }
+      ]
+    },
+    {
+      "id": "fiwind",
+      "nombre": "Fiwind",
+      "tipo": "billetera",
+      "emoji": "🌐",
+      "productos": [
+        { "id": "cuenta_remunerada", "nombre": "Cuenta Remunerada", "tna": 23.0, "tea": null, "moneda": "ARS", "plazo_min": 1, "plazo_max": 1, "notas": "Tope de $750.000" }
+      ]
+    },
+    {
+      "id": "nacion",
+      "nombre": "Banco Nación",
+      "tipo": "banco",
+      "emoji": "🏛️",
+      "productos": [
+        { "id": "plazo_fijo_30", "nombre": "Plazo Fijo 30 días", "tna": 20.0, "tea": null, "moneda": "ARS", "plazo_min": 30, "plazo_max": 30, "notas": "Desde $1.000. Presencial o BNA+" },
+        { "id": "plazo_fijo_60", "nombre": "Plazo Fijo 60 días", "tna": 20.5, "tea": null, "moneda": "ARS", "plazo_min": 60, "plazo_max": 60, "notas": "" },
+        { "id": "plazo_fijo_uva", "nombre": "Plazo Fijo UVA", "tna": null, "tea": null, "moneda": "ARS", "plazo_min": 30, "plazo_max": 365, "notas": "CER + 1%" },
+        { "id": "plazo_fijo_usd", "nombre": "Plazo Fijo USD", "tna": 1.5, "tea": null, "moneda": "USD", "plazo_min": 30, "plazo_max": 180, "notas": "En dólares billete" },
+        { "id": "fci_mm", "nombre": "FCI Money Market", "tna": 21.0, "tea": null, "moneda": "ARS", "plazo_min": 1, "plazo_max": 1, "notas": "BNA+ — disponible al día hábil siguiente" }
+      ]
+    },
+    {
+      "id": "galicia",
+      "nombre": "Galicia",
+      "tipo": "banco",
+      "emoji": "🔴",
+      "productos": [
+        { "id": "plazo_fijo_30", "nombre": "Plazo Fijo 30 días", "tna": 21.0, "tea": null, "moneda": "ARS", "plazo_min": 30, "plazo_max": 30, "notas": "Online desde app Galicia Más" },
+        { "id": "plazo_fijo_60", "nombre": "Plazo Fijo 60 días", "tna": 21.5, "tea": null, "moneda": "ARS", "plazo_min": 60, "plazo_max": 60, "notas": "" },
+        { "id": "plazo_fijo_uva", "nombre": "Plazo Fijo UVA", "tna": null, "tea": null, "moneda": "ARS", "plazo_min": 90, "plazo_max": 365, "notas": "CER + 1%" },
+        { "id": "plazo_fijo_usd", "nombre": "Plazo Fijo USD", "tna": 2.0, "tea": null, "moneda": "USD", "plazo_min": 30, "plazo_max": 180, "notas": "" },
+        { "id": "fci_mm", "nombre": "FCI Money Market (Galicia AM)", "tna": 19.3, "tea": null, "moneda": "ARS", "plazo_min": 1, "plazo_max": 1, "notas": "Fondo FIMA — disponible el mismo día" }
+      ]
+    },
+    {
+      "id": "bbva",
+      "nombre": "BBVA",
+      "tipo": "banco",
+      "emoji": "🔷",
+      "productos": [
+        { "id": "plazo_fijo_30", "nombre": "Plazo Fijo 30 días", "tna": 20.0, "tea": null, "moneda": "ARS", "plazo_min": 30, "plazo_max": 30, "notas": "Desde $1.000" },
+        { "id": "plazo_fijo_60", "nombre": "Plazo Fijo 60 días", "tna": 20.5, "tea": null, "moneda": "ARS", "plazo_min": 60, "plazo_max": 60, "notas": "" },
+        { "id": "plazo_fijo_uva", "nombre": "Plazo Fijo UVA", "tna": null, "tea": null, "moneda": "ARS", "plazo_min": 90, "plazo_max": 365, "notas": "CER + 1%" },
+        { "id": "plazo_fijo_usd", "nombre": "Plazo Fijo USD", "tna": 1.75, "tea": null, "moneda": "USD", "plazo_min": 30, "plazo_max": 180, "notas": "" },
+        { "id": "fci_mm", "nombre": "FCI Money Market (BBVA AM)", "tna": 21.5, "tea": null, "moneda": "ARS", "plazo_min": 1, "plazo_max": 1, "notas": "App BBVA — acreditación al día hábil siguiente" }
+      ]
+    },
+    {
+      "id": "santander",
+      "nombre": "Santander",
+      "tipo": "banco",
+      "emoji": "🔴",
+      "productos": [
+        { "id": "plazo_fijo_30", "nombre": "Plazo Fijo 30 días", "tna": 19.0, "tea": null, "moneda": "ARS", "plazo_min": 30, "plazo_max": 30, "notas": "" },
+        { "id": "plazo_fijo_60", "nombre": "Plazo Fijo 60 días", "tna": 19.5, "tea": null, "moneda": "ARS", "plazo_min": 60, "plazo_max": 60, "notas": "" },
+        { "id": "plazo_fijo_uva", "nombre": "Plazo Fijo UVA", "tna": null, "tea": null, "moneda": "ARS", "plazo_min": 90, "plazo_max": 365, "notas": "CER + 0.5%" },
+        { "id": "plazo_fijo_usd", "nombre": "Plazo Fijo USD", "tna": 1.5, "tea": null, "moneda": "USD", "plazo_min": 30, "plazo_max": 180, "notas": "" },
+        { "id": "fci_mm", "nombre": "FCI Money Market (Santander AM)", "tna": 20.5, "tea": null, "moneda": "ARS", "plazo_min": 1, "plazo_max": 1, "notas": "App Santander — disponible el mismo día" }
+      ]
+    },
+    {
+      "id": "icbc",
+      "nombre": "ICBC",
+      "tipo": "banco",
+      "emoji": "🟥",
+      "productos": [
+        { "id": "plazo_fijo_30", "nombre": "Plazo Fijo 30 días", "tna": 20.5, "tea": null, "moneda": "ARS", "plazo_min": 30, "plazo_max": 30, "notas": "Desde $1.000" },
+        { "id": "plazo_fijo_60", "nombre": "Plazo Fijo 60 días", "tna": 21.0, "tea": null, "moneda": "ARS", "plazo_min": 60, "plazo_max": 60, "notas": "" },
+        { "id": "plazo_fijo_uva", "nombre": "Plazo Fijo UVA", "tna": null, "tea": null, "moneda": "ARS", "plazo_min": 90, "plazo_max": 365, "notas": "CER + 1%" },
+        { "id": "fci_mm", "nombre": "FCI Money Market", "tna": 22.0, "tea": null, "moneda": "ARS", "plazo_min": 1, "plazo_max": 1, "notas": "Disponible al día hábil siguiente" }
+      ]
+    },
+    {
+      "id": "supervielle",
+      "nombre": "Supervielle",
+      "tipo": "banco",
+      "emoji": "🟢",
+      "productos": [
+        { "id": "plazo_fijo_uva", "nombre": "Plazo Fijo UVA", "tna": null, "tea": null, "moneda": "ARS", "plazo_min": 90, "plazo_max": 365, "notas": "CER + 1%" },
+        { "id": "fci_mm", "nombre": "FCI Money Market", "tna": 21.0, "tea": null, "moneda": "ARS", "plazo_min": 1, "plazo_max": 1, "notas": "Disponible al día hábil siguiente" }
+      ]
+    }
+  ]
+}

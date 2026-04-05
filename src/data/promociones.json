@@ -1,0 +1,110 @@
+[
+  {
+    "id": "mp-bono-bienvenida",
+    "entidad": "Mercado Pago",
+    "emoji": "💙",
+    "titulo": "Bono de bienvenida $5.000",
+    "descripcion": "Abrí tu cuenta, completá la verificación de identidad y transferí al menos $1.000 en los primeros 7 días para recibir tu bono.",
+    "tipo": "bono_bienvenida",
+    "monto": "$5.000",
+    "vencimiento": "2026-06-30",
+    "vencido": false,
+    "link_texto": "Abrir cuenta en Mercado Pago"
+  },
+  {
+    "id": "uala-bono-bienvenida",
+    "entidad": "Ualá",
+    "emoji": "🟣",
+    "titulo": "Bono de bienvenida $3.000",
+    "descripcion": "Activá tu tarjeta Ualá y realizá tu primera compra con tarjeta de débito por más de $500 para recibir el bono en tu cuenta.",
+    "tipo": "bono_bienvenida",
+    "monto": "$3.000",
+    "vencimiento": "2026-05-31",
+    "vencido": false,
+    "link_texto": "Abrir cuenta en Ualá"
+  },
+  {
+    "id": "brubank-cashback",
+    "entidad": "Brubank",
+    "emoji": "🔵",
+    "titulo": "10% cashback en supermercados",
+    "descripcion": "Pagá con tu tarjeta de débito Brubank en supermercados adheridos y recuperá el 10% de tus compras, hasta $2.000 por mes.",
+    "tipo": "cashback",
+    "monto": "10% (hasta $2.000/mes)",
+    "vencimiento": "2026-04-30",
+    "vencido": false,
+    "link_texto": "Ver condiciones en Brubank"
+  },
+  {
+    "id": "naranjax-bono",
+    "entidad": "Naranja X",
+    "emoji": "🟠",
+    "titulo": "Bono de bienvenida $2.500",
+    "descripcion": "Abrí tu cuenta Naranja X, activá tu tarjeta y pagá una vez con ella para recibir tu bono de bienvenida automáticamente.",
+    "tipo": "bono_bienvenida",
+    "monto": "$2.500",
+    "vencimiento": "2026-05-15",
+    "vencido": false,
+    "link_texto": "Abrir cuenta en Naranja X"
+  },
+  {
+    "id": "lemon-cashback-cripto",
+    "entidad": "Lemon",
+    "emoji": "🍋",
+    "titulo": "2% cashback en cripto",
+    "descripcion": "Pagá con tu tarjeta Lemon Card en cualquier comercio y recibí el 2% de cashback en Bitcoin o USDT acreditado al instante.",
+    "tipo": "cashback",
+    "monto": "2% en cripto",
+    "vencimiento": "2026-12-31",
+    "vencido": false,
+    "link_texto": "Ver condiciones en Lemon"
+  },
+  {
+    "id": "galicia-tasa-especial",
+    "entidad": "Galicia",
+    "emoji": "🔴",
+    "titulo": "Tasa especial en Plazo Fijo online",
+    "descripcion": "Constituí tu plazo fijo desde la app Galicia Más y obtené una tasa 0.5% adicional por encima de la tasa de ventanilla.",
+    "tipo": "beneficio",
+    "monto": "+0.5% TNA",
+    "vencimiento": "2026-06-30",
+    "vencido": false,
+    "link_texto": "Ver en Galicia Más"
+  },
+  {
+    "id": "nacion-pf-online",
+    "entidad": "Banco Nación",
+    "emoji": "🏛️",
+    "titulo": "Plazo Fijo digital sin mínimo",
+    "descripcion": "Constituí un plazo fijo desde la app BNA+ sin monto mínimo y sin necesidad de ir a la sucursal. Disponible 24/7.",
+    "tipo": "beneficio",
+    "monto": "Sin mínimo",
+    "vencimiento": "2026-12-31",
+    "vencido": false,
+    "link_texto": "Descargar BNA+"
+  },
+  {
+    "id": "bbva-descuento-ecommerce",
+    "entidad": "BBVA",
+    "emoji": "🔷",
+    "titulo": "30% off en e-commerce seleccionados",
+    "descripcion": "Pagá con tu tarjeta BBVA en comercios online adheridos y obtené hasta 30% de descuento los días martes y jueves.",
+    "tipo": "cashback",
+    "monto": "30% off",
+    "vencimiento": "2026-04-30",
+    "vencido": false,
+    "link_texto": "Ver comercios adheridos"
+  },
+  {
+    "id": "belo-usdt-rendimiento",
+    "entidad": "Belo",
+    "emoji": "⚫",
+    "titulo": "5% APY en USDT",
+    "descripcion": "Guardá USDT en tu cuenta Belo y ganás 5% APY en dólares, acreditado mensualmente. Sin monto mínimo.",
+    "tipo": "beneficio",
+    "monto": "5% APY en USD",
+    "vencimiento": "2026-12-31",
+    "vencido": false,
+    "link_texto": "Ver condiciones en Belo"
+  }
+]
