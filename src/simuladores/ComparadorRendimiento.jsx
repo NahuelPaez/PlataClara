@@ -14,7 +14,6 @@ const OTROS_MAP = {
   'CARREFOUR BANCO':'carrefour',
   'FIWIND':         'fiwind',
   'UALA':           'uala',
-  'BRUBANK':        'brubank',
   'SUPERVIELLE':    'supervielle',
 }
 
