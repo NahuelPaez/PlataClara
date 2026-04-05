@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <!-- Fondo -->
+  <rect width="1200" height="630" fill="#0d7377"/>
+
+  <!-- Círculo decorativo fondo -->
+  <circle cx="980" cy="120" r="320" fill="#0a5f63" opacity="0.6"/>
+  <circle cx="1100" cy="550" r="180" fill="#0a5f63" opacity="0.4"/>
+
+  <!-- Logo ícono -->
+  <circle cx="120" cy="90" r="44" fill="#F5A623"/>
+  <circle cx="120" cy="90" r="44" fill="url(#goldOG)"/>
+  <defs>
+    <radialGradient id="goldOG" cx="40%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#FFD166"/>
+      <stop offset="100%" stop-color="#E08C00"/>
+    </radialGradient>
+  </defs>
+  <polygon points="95,85 120,68 145,85" fill="white" opacity="0.95"/>
+  <rect x="98" y="85" width="6" height="18" rx="1" fill="white" opacity="0.95"/>
+  <rect x="111" y="85" width="6" height="18" rx="1" fill="white" opacity="0.95"/>
+  <rect x="124" y="85" width="6" height="18" rx="1" fill="white" opacity="0.95"/>
+  <rect x="137" y="85" width="6" height="18" rx="1" fill="white" opacity="0.95"/>
+  <rect x="93" y="103" width="54" height="5" rx="1" fill="white" opacity="0.95"/>
+
+  <!-- Nombre -->
+  <text x="178" y="103" font-family="Arial, sans-serif" font-size="52" font-weight="700" fill="white">PlataClara</text>
+
+  <!-- Tagline principal -->
+  <text x="80" y="290" font-family="Arial, sans-serif" font-size="72" font-weight="800" fill="white">Tu plata,</text>
+  <text x="80" y="375" font-family="Arial, sans-serif" font-size="72" font-weight="800" fill="#f59e0b">más clara</text>
+  <text x="80" y="460" font-family="Arial, sans-serif" font-size="72" font-weight="800" fill="white">que nunca.</text>
+
+  <!-- Descripción -->
+  <text x="80" y="545" font-family="Arial, sans-serif" font-size="28" fill="white" opacity="0.85">Educación financiera · Simuladores · Comparador de tasas</text>
+
+  <!-- URL -->
+  <text x="80" y="600" font-family="Arial, sans-serif" font-size="24" fill="white" opacity="0.6">plataclara.com</text>
+</svg>
