@@ -1,15 +1,29 @@
 import { useState } from 'react'
 
 export default function QuienesSomos() {
+  const [nombre, setNombre] = useState('')
   const [mensaje, setMensaje] = useState('')
   const [enviado, setEnviado] = useState(false)
+  const [enviando, setEnviando] = useState(false)
 
-  function handleEnviar(e) {
+  async function handleEnviar(e) {
     e.preventDefault()
     if (!mensaje.trim()) return
-    window.location.href = `mailto:hola.plataclara@gmail.com?subject=Mensaje desde PlataClara&body=${encodeURIComponent(mensaje)}`
-    setEnviado(true)
-    setMensaje('')
+    setEnviando(true)
+    try {
+      await fetch('https://formspree.io/f/xreorzra', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nombre, mensaje }),
+      })
+      setEnviado(true)
+      setNombre('')
+      setMensaje('')
+    } catch {
+      // silently fail
+    } finally {
+      setEnviando(false)
+    }
   }
 
   return (
@@ -66,22 +80,30 @@ export default function QuienesSomos() {
             ¿Te quedó alguna duda? ¿Querés que agreguemos algo? Mandanos tu mensaje, leemos todo.
           </p>
           {enviado ? (
-            <p className="text-sm text-emerald-600 font-medium">¡Gracias! Tu cliente de correo se abrió con el mensaje listo para enviar.</p>
+            <p className="text-sm text-emerald-600 font-medium">¡Gracias por tu mensaje! Te respondemos a la brevedad.</p>
           ) : (
-            <form onSubmit={handleEnviar} className="flex flex-col sm:flex-row gap-3">
+            <form onSubmit={handleEnviar} className="flex flex-col gap-3">
+              <input
+                type="text"
+                className="input-field text-sm"
+                placeholder="Tu nombre (opcional)"
+                value={nombre}
+                onChange={e => setNombre(e.target.value)}
+              />
               <textarea
-                className="input-field flex-1 resize-none text-sm"
+                className="input-field resize-none text-sm"
                 rows={3}
                 placeholder="Escribí tu mensaje acá..."
                 value={mensaje}
                 onChange={e => setMensaje(e.target.value)}
+                required
               />
               <button
                 type="submit"
-                disabled={!mensaje.trim()}
-                className="btn-primary self-end sm:self-stretch px-6 disabled:opacity-40 disabled:cursor-not-allowed whitespace-nowrap"
+                disabled={!mensaje.trim() || enviando}
+                className="btn-primary self-start px-6 disabled:opacity-40 disabled:cursor-not-allowed"
               >
-                Enviar
+                {enviando ? 'Enviando...' : 'Enviar'}
               </button>
             </form>
           )}
