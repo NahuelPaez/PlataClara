@@ -14,6 +14,7 @@ const OTROS_MAP = {
   'CARREFOUR BANCO':'carrefour',
   'FIWIND':         'fiwind',
   'UALA':           'uala',
+  'BRUBANK':        'brubank',
   'SUPERVIELLE':    'supervielle',
 }
 
@@ -58,6 +59,7 @@ export default function ComparadorRendimiento() {
     const MDINERO_MAP = {
       'Fima Premium - Clase A':   'galicia',
       'Super Ahorro $ - Clase A': 'santander',
+      'Mercado Fondo - Clase A':  'mercadopago',
     }
     const fetchMD = Promise.all([
       fetch('https://api.argentinadatos.com/v1/finanzas/fci/mercadoDinero/ultimo').then(r => r.json()),
@@ -69,7 +71,11 @@ export default function ComparadorRendimiento() {
           const u = ultimo.find(d => d.fondo === nombre)
           const p = penultimo.find(d => d.fondo === nombre)
           if (u?.vcp && p?.vcp && p.vcp > 0) {
-            const tna = ((u.vcp / p.vcp) ** 365 - 1) * 100
+            // Usar días reales entre fechas para evitar distorsión por fines de semana
+            const days = u.fecha && p.fecha
+              ? Math.max(1, Math.round(Math.abs(new Date(u.fecha) - new Date(p.fecha)) / 86400000))
+              : 1
+            const tna = ((u.vcp / p.vcp) ** (365 / days) - 1) * 100
             if (tna > 5 && tna < 200) live[id] = Math.round(tna * 100) / 100
           }
         })
