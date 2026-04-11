@@ -36,24 +36,63 @@ export default function QuienesSomos() {
           <h2 className="section-title text-center">Finanzas para todos, sin vueltas</h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
-          <div className="card">
-            <div className="text-2xl mb-2">🎯</div>
-            <h3 className="font-bold text-slate-800 text-sm mb-1">Nuestra misión</h3>
-            <p className="text-slate-600 leading-normal text-xs">
-              Democratizar la educación financiera en Argentina. Queremos que cualquier persona,
-              sin importar su nivel de conocimiento, pueda entender qué hacer con su dinero,
-              comparar opciones y tomar mejores decisiones financieras.
-            </p>
+        <div className="flex flex-col lg:flex-row gap-4 mb-4">
+          {/* Izquierda: misión + por qué */}
+          <div className="flex-1 flex flex-col gap-3">
+            <div className="card">
+              <div className="text-2xl mb-2">🎯</div>
+              <h3 className="font-bold text-slate-800 text-sm mb-1">Nuestra misión</h3>
+              <p className="text-slate-600 leading-normal text-xs">
+                Democratizar la educación financiera en Argentina. Queremos que cualquier persona,
+                sin importar su nivel de conocimiento, pueda entender qué hacer con su dinero,
+                comparar opciones y tomar mejores decisiones financieras.
+              </p>
+            </div>
+            <div className="card">
+              <div className="text-2xl mb-2">💡</div>
+              <h3 className="font-bold text-slate-800 text-sm mb-1">Por qué lo creamos</h3>
+              <p className="text-slate-600 leading-normal text-xs">
+                En Argentina hay mucha información dispersa y difícil de comparar.
+                Decidimos crear un lugar simple donde cualquier persona pueda entender
+                sus opciones y simular rendimientos antes de tomar decisiones.
+              </p>
+            </div>
           </div>
-          <div className="card">
-            <div className="text-2xl mb-2">💡</div>
-            <h3 className="font-bold text-slate-800 text-sm mb-1">Por qué lo creamos</h3>
-            <p className="text-slate-600 leading-normal text-xs">
-              En Argentina hay mucha información dispersa y difícil de comparar.
-              Decidimos crear un lugar simple donde cualquier persona pueda entender
-              sus opciones y simular rendimientos antes de tomar decisiones.
+
+          {/* Derecha: contacto */}
+          <div className="card lg:w-80 shrink-0 flex flex-col">
+            <h3 className="font-bold text-slate-800 text-sm mb-1">Contacto</h3>
+            <p className="text-xs text-slate-500 mb-3">
+              ¿Te quedó alguna duda? ¿Querés que agreguemos algo? Mandanos tu mensaje, leemos todo.
             </p>
+            {enviado ? (
+              <p className="text-sm text-emerald-600 font-medium">¡Gracias por tu mensaje! Te respondemos a la brevedad.</p>
+            ) : (
+              <form onSubmit={handleEnviar} className="flex flex-col gap-3 flex-1">
+                <input
+                  type="text"
+                  className="input-field text-sm"
+                  placeholder="Tu nombre (opcional)"
+                  value={nombre}
+                  onChange={e => setNombre(e.target.value)}
+                />
+                <textarea
+                  className="input-field resize-none text-sm flex-1"
+                  rows={4}
+                  placeholder="Escribí tu mensaje acá..."
+                  value={mensaje}
+                  onChange={e => setMensaje(e.target.value)}
+                  required
+                />
+                <button
+                  type="submit"
+                  disabled={!mensaje.trim() || enviando}
+                  className="btn-primary self-start px-6 disabled:opacity-40 disabled:cursor-not-allowed"
+                >
+                  {enviando ? 'Enviando...' : 'Enviar'}
+                </button>
+              </form>
+            )}
           </div>
         </div>
 
@@ -72,41 +111,6 @@ export default function QuienesSomos() {
               </p>
             </div>
           </div>
-        </div>
-
-        <div className="card">
-          <h3 className="font-bold text-slate-800 text-sm mb-1">Contacto</h3>
-          <p className="text-xs text-slate-500 mb-3">
-            ¿Te quedó alguna duda? ¿Querés que agreguemos algo? Mandanos tu mensaje, leemos todo.
-          </p>
-          {enviado ? (
-            <p className="text-sm text-emerald-600 font-medium">¡Gracias por tu mensaje! Te respondemos a la brevedad.</p>
-          ) : (
-            <form onSubmit={handleEnviar} className="flex flex-col gap-3">
-              <input
-                type="text"
-                className="input-field text-sm"
-                placeholder="Tu nombre (opcional)"
-                value={nombre}
-                onChange={e => setNombre(e.target.value)}
-              />
-              <textarea
-                className="input-field resize-none text-sm"
-                rows={3}
-                placeholder="Escribí tu mensaje acá..."
-                value={mensaje}
-                onChange={e => setMensaje(e.target.value)}
-                required
-              />
-              <button
-                type="submit"
-                disabled={!mensaje.trim() || enviando}
-                className="btn-primary self-start px-6 disabled:opacity-40 disabled:cursor-not-allowed"
-              >
-                {enviando ? 'Enviando...' : 'Enviar'}
-              </button>
-            </form>
-          )}
         </div>
 
         <div className="mt-6 pt-5 border-t border-slate-100 text-center">
