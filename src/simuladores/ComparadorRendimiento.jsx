@@ -280,7 +280,7 @@ export default function ComparadorRendimiento() {
               </table>
             </div>
             <p className="text-xs text-slate-400 mt-3 text-center">
-              Tasas JSON actualizadas al {tasasData.lastUpdated}. Verificá siempre las tasas vigentes antes de operar.
+              Verificá siempre las tasas vigentes antes de operar.
             </p>
           </>
         )}
