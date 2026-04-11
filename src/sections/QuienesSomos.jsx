@@ -36,20 +36,20 @@ export default function QuienesSomos() {
           <h2 className="section-title text-center">Finanzas para todos, sin vueltas</h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
           <div className="card">
-            <div className="text-3xl mb-4">🎯</div>
-            <h3 className="font-bold text-slate-800 text-lg mb-3">Nuestra misión</h3>
-            <p className="text-slate-600 leading-relaxed text-sm">
+            <div className="text-2xl mb-2">🎯</div>
+            <h3 className="font-bold text-slate-800 text-sm mb-1">Nuestra misión</h3>
+            <p className="text-slate-600 leading-normal text-xs">
               Democratizar la educación financiera en Argentina. Queremos que cualquier persona,
               sin importar su nivel de conocimiento, pueda entender qué hacer con su dinero,
               comparar opciones y tomar mejores decisiones financieras.
             </p>
           </div>
           <div className="card">
-            <div className="text-3xl mb-4">💡</div>
-            <h3 className="font-bold text-slate-800 text-lg mb-3">Por qué lo creamos</h3>
-            <p className="text-slate-600 leading-relaxed text-sm">
+            <div className="text-2xl mb-2">💡</div>
+            <h3 className="font-bold text-slate-800 text-sm mb-1">Por qué lo creamos</h3>
+            <p className="text-slate-600 leading-normal text-xs">
               En Argentina hay mucha información dispersa y difícil de comparar.
               Decidimos crear un lugar simple donde cualquier persona pueda entender
               sus opciones y simular rendimientos antes de tomar decisiones.
@@ -57,12 +57,12 @@ export default function QuienesSomos() {
           </div>
         </div>
 
-        <div className="bg-amber-50 border border-amber-200 rounded-2xl p-4 mb-6">
-          <div className="flex items-start gap-4">
-            <span className="text-2xl flex-shrink-0">⚠️</span>
+        <div className="bg-amber-50 border border-amber-200 rounded-2xl px-4 py-3 mb-4">
+          <div className="flex items-start gap-3">
+            <span className="text-lg flex-shrink-0">⚠️</span>
             <div>
-              <h4 className="font-bold text-amber-800 mb-2">Aviso legal importante</h4>
-              <p className="text-sm text-amber-700 leading-relaxed">
+              <h4 className="font-bold text-amber-800 text-sm mb-1">Aviso legal importante</h4>
+              <p className="text-xs text-amber-700 leading-normal">
                 <strong>PlataClara es un sitio educativo e informativo.</strong> No somos
                 asesores financieros registrados ante la CNV ni brindamos asesoramiento de inversión.
                 La información publicada es de carácter general y no considera tu situación
@@ -75,8 +75,8 @@ export default function QuienesSomos() {
         </div>
 
         <div className="card">
-          <h3 className="font-bold text-slate-800 text-lg mb-1">Contacto</h3>
-          <p className="text-sm text-slate-500 mb-4">
+          <h3 className="font-bold text-slate-800 text-sm mb-1">Contacto</h3>
+          <p className="text-xs text-slate-500 mb-3">
             ¿Te quedó alguna duda? ¿Querés que agreguemos algo? Mandanos tu mensaje, leemos todo.
           </p>
           {enviado ? (
@@ -109,10 +109,10 @@ export default function QuienesSomos() {
           )}
         </div>
 
-        <div className="mt-12 pt-8 border-t border-slate-100 text-center">
-          <div className="flex items-center justify-center gap-2 mb-3">
-            <span className="text-2xl">🪙</span>
-            <span className="text-xl font-bold text-primary-600">
+        <div className="mt-6 pt-5 border-t border-slate-100 text-center">
+          <div className="flex items-center justify-center gap-2 mb-2">
+            <span className="text-xl">🪙</span>
+            <span className="text-base font-bold text-primary-600">
               Plata<span className="text-accent font-extrabold">Clara</span>
             </span>
           </div>
