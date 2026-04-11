@@ -14,7 +14,9 @@ const GRUPOS = [
     dot: 'bg-green-500',
     simuladores: [
       { id: 'cuenta_remunerada', label: '💰 Cta. Remunerada', component: CuentaRemunerada },
-      { id: 'plazo_fijo',        label: '🏦 Plazo Fijo',       component: PlazoFijo },
+      { id: 'plazo_fijo_pesos',   label: '🏦 Plazo Fijo $',     component: () => <PlazoFijo initialTipo="pesos" /> },
+      { id: 'plazo_fijo_uva',    label: '📈 Plazo Fijo UVA',   component: () => <PlazoFijo initialTipo="uva" /> },
+      { id: 'plazo_fijo_usd',    label: '💵 Plazo Fijo USD',   component: () => <PlazoFijo initialTipo="usd" /> },
       { id: 'fci',               label: '📊 FCI',              component: FCI },
       { id: 'caucion',           label: '🤝 Caución',          component: Caucion },
     ],

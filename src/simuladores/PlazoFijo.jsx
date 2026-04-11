@@ -38,8 +38,8 @@ const GLOSARIO = [
   { term: '🔒 CER (Coeficiente de Estabilización de Referencia)', def: 'Índice publicado por el BCRA que sigue la inflación oficial (IPC). Es la base del ajuste de los plazos fijos UVA y varios bonos soberanos.' },
 ]
 
-export default function PlazoFijo() {
-  const [tipo, setTipo] = useState('pesos')
+export default function PlazoFijo({ initialTipo = 'pesos' }) {
+  const [tipo, setTipo] = useState(initialTipo)
   const [resultado, setResultado] = useState(null)
   const [tnaUsada, setTnaUsada] = useState(null)
 
