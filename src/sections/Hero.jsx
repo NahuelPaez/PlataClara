@@ -318,7 +318,10 @@ export default function Hero() {
             <p className="text-lg md:text-xl text-white/80 max-w-xl mb-10 leading-relaxed">
               Aprendé qué es cada instrumento financiero, simulá cuánto podés ganar
               y comparás las tasas de los principales bancos y billeteras de Argentina.
-              Sin jerga, sin vueltas.
+              <span className="relative inline-block">
+                Sin jerga, sin vueltas.
+                <span className="absolute left-0 -bottom-0.5 w-full h-0.5 bg-accent rounded-full" />
+              </span>
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-2xl">
               {ACCESOS.map(a => (
