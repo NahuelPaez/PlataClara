@@ -78,19 +78,6 @@ export default function PlazoFijo({ initialTipo = 'pesos' }) {
 
   return (
     <div className="space-y-3">
-      <div className="flex flex-wrap gap-2">
-        {[
-          { id: 'pesos', label: '🇦🇷 Pesos' },
-          { id: 'uva',   label: '📈 UVA (anti-inflación)' },
-          { id: 'usd',   label: '💵 Dólares' },
-        ].map(t => (
-          <button key={t.id} onClick={() => { setTipo(t.id); setResultado(null) }}
-            className={`px-3 py-1.5 rounded-xl text-sm font-medium transition-all ${tipo === t.id ? 'tab-active' : 'tab-inactive'}`}>
-            {t.label}
-          </button>
-        ))}
-      </div>
-
       {tipo === 'uva' && (
         <div className="bg-amber-50 border border-amber-100 rounded-xl px-4 py-3 text-sm text-amber-700">
           <strong>Plazo Fijo UVA:</strong> Tu capital se ajusta mes a mes por la inflación (CER)
