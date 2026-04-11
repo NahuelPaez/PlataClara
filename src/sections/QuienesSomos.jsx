@@ -37,9 +37,9 @@ export default function QuienesSomos() {
         </div>
 
         <div className="flex flex-col lg:flex-row gap-4 mb-4">
-          {/* Izquierda: misión + por qué */}
-          <div className="flex-1 flex flex-col gap-3">
-            <div className="card flex items-center gap-3">
+          {/* Izquierda: misión + por qué — se estiran para igualar la altura del contacto */}
+          <div className="lg:w-5/12 flex flex-col gap-3">
+            <div className="card flex-1 flex items-start gap-3">
               <span className="text-2xl flex-shrink-0">🎯</span>
               <div>
                 <h3 className="font-bold text-slate-800 text-sm mb-1">Nuestra misión</h3>
@@ -50,7 +50,7 @@ export default function QuienesSomos() {
                 </p>
               </div>
             </div>
-            <div className="card flex items-center gap-3">
+            <div className="card flex-1 flex items-start gap-3">
               <span className="text-2xl flex-shrink-0">💡</span>
               <div>
                 <h3 className="font-bold text-slate-800 text-sm mb-1">Por qué lo creamos</h3>
@@ -64,7 +64,7 @@ export default function QuienesSomos() {
           </div>
 
           {/* Derecha: contacto */}
-          <div className="card lg:w-80 shrink-0 flex flex-col">
+          <div className="card flex-1 flex flex-col">
             <h3 className="font-bold text-slate-800 text-sm mb-1">Contacto</h3>
             <p className="text-xs text-slate-500 mb-3">
               Sugerencias, dudas o lo que sea. Leemos todo.
