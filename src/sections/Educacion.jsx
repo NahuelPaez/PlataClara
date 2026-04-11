@@ -17,10 +17,10 @@ export default function Educacion() {
     : productos.filter(p => p.categoria === cat)
 
   return (
-    <section id="educacion" className="bg-slate-50 py-16">
+    <section id="educacion" className="bg-slate-50 py-10">
       <div className="max-w-6xl mx-auto px-4">
         {/* Header */}
-        <div className="mb-10">
+        <div className="mb-6">
           <p className="text-sm font-semibold text-primary-500 uppercase tracking-widest mb-2">
             Educación Financiera
           </p>
@@ -47,7 +47,7 @@ export default function Educacion() {
         </div>
 
         {/* Grid de productos */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
           {filtrados.map(p => (
             <ProductCard key={p.id} producto={p} />
           ))}

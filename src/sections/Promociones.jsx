@@ -27,7 +27,7 @@ export default function Promociones() {
     : promociones.filter(p => p.tipo === filtro)
 
   return (
-    <section id="promociones" className="py-16 bg-white">
+    <section id="promociones" className="py-8 bg-white">
       <div className="max-w-6xl mx-auto px-4">
         {/* Header */}
         <div className="mb-8">
@@ -55,7 +55,7 @@ export default function Promociones() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
           {filtradas.map(promo => {
             const vencida = isVencida(promo.vencimiento)
             const badge = TIPO_BADGE[promo.tipo]

@@ -166,7 +166,7 @@ export default function Comparador() {
   const isUVA = productoId === 'plazo_fijo_uva'
 
   return (
-    <section id="comparador" className="py-16 bg-slate-50">
+    <section id="comparador" className="py-8 bg-slate-50">
       <div className="max-w-6xl mx-auto px-4">
         <div className="mb-8">
           <p className="text-sm font-semibold text-primary-500 uppercase tracking-widest mb-2">

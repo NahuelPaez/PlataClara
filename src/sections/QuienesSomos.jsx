@@ -27,16 +27,16 @@ export default function QuienesSomos() {
   }
 
   return (
-    <section id="nosotros" className="py-16 bg-white">
+    <section id="nosotros" className="py-8 bg-white">
       <div className="max-w-4xl mx-auto px-4">
-        <div className="text-center mb-12">
+        <div className="text-center mb-6">
           <p className="text-sm font-semibold text-primary-500 uppercase tracking-widest mb-2">
             Quiénes Somos
           </p>
           <h2 className="section-title text-center">Finanzas para todos, sin vueltas</h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
           <div className="card">
             <div className="text-3xl mb-4">🎯</div>
             <h3 className="font-bold text-slate-800 text-lg mb-3">Nuestra misión</h3>
@@ -57,7 +57,7 @@ export default function QuienesSomos() {
           </div>
         </div>
 
-        <div className="bg-amber-50 border border-amber-200 rounded-2xl p-6 mb-10">
+        <div className="bg-amber-50 border border-amber-200 rounded-2xl p-4 mb-6">
           <div className="flex items-start gap-4">
             <span className="text-2xl flex-shrink-0">⚠️</span>
             <div>

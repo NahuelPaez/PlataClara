@@ -54,7 +54,7 @@ export default function Simuladores() {
   const activeLabel     = ALL.find(s => s.id === active)?.label
 
   return (
-    <section id="simuladores" className="py-16 bg-white">
+    <section id="simuladores" className="py-8 bg-white">
       <div className="max-w-6xl mx-auto px-4">
         {/* Header */}
         <div className="mb-8">

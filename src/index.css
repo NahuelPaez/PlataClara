@@ -26,7 +26,7 @@
     @apply bg-accent hover:bg-accent-dark text-white font-semibold px-5 py-2.5 rounded-xl transition-colors duration-200 cursor-pointer;
   }
   .card {
-    @apply bg-white rounded-2xl shadow-sm border border-slate-100 p-6;
+    @apply bg-white rounded-2xl shadow-sm border border-slate-100 p-4;
   }
   .input-field {
     @apply w-full border border-slate-200 rounded-xl px-4 py-2.5 text-slate-800 bg-white focus:outline-none focus:ring-2 focus:ring-primary-400 focus:border-transparent transition-all text-sm;
@@ -35,10 +35,10 @@
     @apply py-16 px-4 max-w-6xl mx-auto;
   }
   .section-title {
-    @apply text-3xl md:text-4xl font-bold text-slate-800 mb-3;
+    @apply text-2xl md:text-3xl font-bold text-slate-800 mb-2;
   }
   .section-subtitle {
-    @apply text-base md:text-lg text-slate-500 mb-10 max-w-2xl;
+    @apply text-sm md:text-base text-slate-500 mb-6 max-w-2xl;
   }
   .tab-active {
     @apply bg-primary-500 text-white shadow-sm;

@@ -11,13 +11,13 @@ export default function ProductCard({ producto }) {
   }
 
   return (
-    <div className="card flex flex-col gap-4 hover:shadow-md transition-shadow duration-200 group">
+    <div className="card flex flex-col gap-3 hover:shadow-md transition-shadow duration-200 group">
       {/* Header */}
-      <div className="flex items-start justify-between gap-3">
-        <div className="flex items-center gap-3">
-          <span className="text-3xl">{icono}</span>
+      <div className="flex items-start justify-between gap-2">
+        <div className="flex items-center gap-2">
+          <span className="text-2xl">{icono}</span>
           <div>
-            <h3 className="font-bold text-slate-800 text-base leading-tight">{nombre}</h3>
+            <h3 className="font-bold text-slate-800 text-sm leading-tight">{nombre}</h3>
             {desdeARS !== null && desdeARS !== undefined && (
               <p className="text-xs text-slate-400 mt-0.5">
                 Desde {desdeARS === 1 ? 'cualquier monto' : formatARS(desdeARS, 0)}
@@ -29,19 +29,19 @@ export default function ProductCard({ producto }) {
       </div>
 
       {/* Descripción */}
-      <p className="text-sm text-slate-600 leading-relaxed">{descripcion}</p>
+      <p className="text-xs text-slate-600 leading-relaxed">{descripcion}</p>
 
       {/* Para quién */}
-      <div className="bg-slate-50 rounded-xl px-4 py-3">
-        <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1">¿Para quién?</p>
-        <p className="text-sm text-slate-700">{paraQuien}</p>
+      <div className="bg-slate-50 rounded-xl px-3 py-2">
+        <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-0.5">¿Para quién?</p>
+        <p className="text-xs text-slate-700">{paraQuien}</p>
       </div>
 
       {/* Ventajas */}
-      <ul className="space-y-1.5">
+      <ul className="space-y-1">
         {ventajas.slice(0, 3).map((v, i) => (
-          <li key={i} className="flex items-start gap-2 text-sm text-slate-600">
-            <span className="text-success mt-0.5 text-base leading-none flex-shrink-0">✓</span>
+          <li key={i} className="flex items-start gap-1.5 text-xs text-slate-600">
+            <span className="text-success mt-0.5 text-sm leading-none flex-shrink-0">✓</span>
             {v}
           </li>
         ))}

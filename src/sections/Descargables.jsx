@@ -26,10 +26,10 @@ const HOJAS = [
 
 export default function Descargables() {
   return (
-    <section id="descargables" className="py-16 bg-slate-50">
+    <section id="descargables" className="py-8 bg-slate-50">
       <div className="max-w-6xl mx-auto px-4">
         {/* Header */}
-        <div className="mb-10">
+        <div className="mb-5">
           <p className="text-sm font-semibold text-primary-500 uppercase tracking-widest mb-2">
             Descargables en Excel
           </p>
@@ -42,7 +42,7 @@ export default function Descargables() {
 
         <div className="flex flex-col lg:flex-row gap-6 items-stretch">
           {/* Cards */}
-          <div className="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-5">
+          <div className="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-3">
             {HOJAS.map((h, i) => (
               <div key={i} className={`card flex flex-col gap-3 border ${h.color} hover:shadow-md transition-shadow`}>
                 <div className="flex items-center gap-3">
