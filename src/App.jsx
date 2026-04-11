@@ -89,9 +89,9 @@ export default function App() {
       <Navbar />
       <main>
         <Hero />
-        <Educacion />
-        <Simuladores />
         <DondeRindeMas />
+        <Simuladores />
+        <Educacion />
         <Descargables />
         <QuienesSomos />
       </main>
