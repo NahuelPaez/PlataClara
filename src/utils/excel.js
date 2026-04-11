@@ -108,20 +108,7 @@ function buildPresupuesto(wb) {
   seccion('GASTOS FIJOS')
   const r_gf1 = dato('Alquiler / expensas',            Array(12).fill(0))
   const r_gf2 = dato('Servicios (luz, gas, internet)', Array(12).fill(0))
-  const r_gf3 = dato('Cuotas / créditos',              Array(12).fill(0))
-  const r_gf4 = dato('Seguro',                         Array(12).fill(0))
-  const r_tot_gf = totalSeccion('TOTAL GASTOS FIJOS', r_gf1, r_gf4)
-  ws.addRow([])
-
-  // GASTOS VARIABLES
-  seccion('GASTOS VARIABLES')
-  const r_gv1 = dato('Supermercado / almacén',     Array(12).fill(0))
-  const r_gv2 = dato('Transporte / nafta',         Array(12).fill(0))
-  const r_gv3 = dato('Salud y farmacia',           Array(12).fill(0))
-  const r_gv4 = dato('Entretenimiento',            Array(12).fill(0))
-  const r_gv5 = dato('Ropa / calzado',             Array(12).fill(0))
-  const r_gv6 = dato('Suscripciones / tecnología', Array(12).fill(0))
-  const r_gv7 = dato('Otros',                      Array(12).fill(0))
+  const r_gf3 = dato('Seguro',                         Array(12).fill(0))
   const r_tc1 = dato('Tarjeta de Crédito (ítem 1)', Array(12).fill(50000), { bg: VERDE_TC })
   ws.getRow(r_tc1).getCell(1).note = {
     texts: [
@@ -137,7 +124,19 @@ function buildPresupuesto(wb) {
   const r_tc3 = dato('Tarjeta de Crédito (ítem 3)', Array(12).fill(0), { bg: VERDE_TC })
   const r_tc4 = dato('Tarjeta de Crédito (ítem 4)', Array(12).fill(0), { bg: VERDE_TC })
   const r_tc5 = dato('Tarjeta de Crédito (ítem 5)', Array(12).fill(0), { bg: VERDE_TC })
-  const r_tot_gv = totalSeccion('TOTAL GASTOS VARIABLES', r_gv1, r_tc5)
+  const r_tot_gf = totalSeccion('TOTAL GASTOS FIJOS', r_gf1, r_tc5)
+  ws.addRow([])
+
+  // GASTOS VARIABLES
+  seccion('GASTOS VARIABLES')
+  const r_gv1 = dato('Supermercado / almacén',     Array(12).fill(0))
+  const r_gv2 = dato('Transporte / nafta',         Array(12).fill(0))
+  const r_gv3 = dato('Salud y farmacia',           Array(12).fill(0))
+  const r_gv4 = dato('Entretenimiento',            Array(12).fill(0))
+  const r_gv5 = dato('Ropa / calzado',             Array(12).fill(0))
+  const r_gv6 = dato('Suscripciones / tecnología', Array(12).fill(0))
+  const r_gv7 = dato('Otros',                      Array(12).fill(0))
+  const r_tot_gv = totalSeccion('TOTAL GASTOS VARIABLES', r_gv1, r_gv7)
   ws.addRow([])
 
   // RESUMEN
