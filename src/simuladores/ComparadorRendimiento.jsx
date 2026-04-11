@@ -267,9 +267,6 @@ export default function ComparadorRendimiento() {
                             <span className={`ml-2 text-xs px-1.5 py-0.5 rounded-full ${r.tipo === 'banco' ? 'bg-blue-100 text-blue-600' : 'bg-purple-100 text-purple-600'}`}>
                               {r.tipo}
                             </span>
-                            {r.isLive && (
-                              <span className="ml-1 text-xs text-green-600">🟢</span>
-                            )}
                           </div>
                         </div>
                       </td>
