@@ -112,8 +112,8 @@ function buildPresupuesto(wb) {
   const r_tc1 = dato('Tarjeta de Crédito (ítem 1)', Array(12).fill(50000), { bg: VERDE_TC })
   ws.getRow(r_tc1).getCell(1).note = {
     texts: [
-      { font: { bold: true, size: 10 }, text: 'Tip cuotas:\n' },
-      { font: { size: 10 }, text: 'Colocá la cuota mensual en cada mes para rastrear hasta cuándo pagás.\n\nEj: heladera $600.000 en 12 cuotas de $50.000 → ingresá $50.000 por mes durante 12 meses.' },
+      { font: { bold: true, size: 9 }, text: 'Tip cuotas:\n' },
+      { font: { size: 9 }, text: 'Colocá la cuota mensual en cada mes para rastrear hasta cuándo pagás.\n\nEj: heladera $600.000 en 6 cuotas de $100.000 → ingresá $100.000 por mes durante 6 meses.' },
     ],
     anchor: {
       from: { col: 1, colOff: 228600, row: r_tc1 - 1, rowOff: 0 },
@@ -124,7 +124,8 @@ function buildPresupuesto(wb) {
   const r_tc3 = dato('Tarjeta de Crédito (ítem 3)', Array(12).fill(0), { bg: VERDE_TC })
   const r_tc4 = dato('Tarjeta de Crédito (ítem 4)', Array(12).fill(0), { bg: VERDE_TC })
   const r_tc5 = dato('Tarjeta de Crédito (ítem 5)', Array(12).fill(0), { bg: VERDE_TC })
-  const r_tot_gf = totalSeccion('TOTAL GASTOS FIJOS', r_gf1, r_tc5)
+  const r_tc6 = dato('Tarjeta de Crédito (ítem 6)', Array(12).fill(0), { bg: VERDE_TC })
+  const r_tot_gf = totalSeccion('TOTAL GASTOS FIJOS', r_gf1, r_tc6)
   ws.addRow([])
 
   // GASTOS VARIABLES
