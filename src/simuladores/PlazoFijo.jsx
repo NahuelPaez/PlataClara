@@ -77,7 +77,7 @@ export default function PlazoFijo({ initialTipo = 'pesos' }) {
   const fmt = tipo === 'usd' ? formatUSD : formatARS
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-3">
       <div className="flex flex-wrap gap-2">
         {[
           { id: 'pesos', label: '🇦🇷 Pesos' },
@@ -85,7 +85,7 @@ export default function PlazoFijo({ initialTipo = 'pesos' }) {
           { id: 'usd',   label: '💵 Dólares' },
         ].map(t => (
           <button key={t.id} onClick={() => { setTipo(t.id); setResultado(null) }}
-            className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${tipo === t.id ? 'tab-active' : 'tab-inactive'}`}>
+            className={`px-3 py-1.5 rounded-xl text-sm font-medium transition-all ${tipo === t.id ? 'tab-active' : 'tab-inactive'}`}>
             {t.label}
           </button>
         ))}

@@ -94,21 +94,16 @@ export default function Simuladores() {
           ))}
 
           {/* Herramienta separada */}
-          <div className="flex items-start gap-3 pt-2 border-t border-slate-100">
-            <span className="text-xs font-semibold text-slate-400 whitespace-nowrap w-28 mt-2">Herramienta</span>
-            <div className="flex flex-col gap-1">
-              <button
-                onClick={() => setActive(HERRAMIENTA.id)}
-                className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-150 self-start ${
-                  active === HERRAMIENTA.id ? 'tab-active' : 'tab-inactive'
-                }`}
-              >
-                {HERRAMIENTA.label}
-              </button>
-              <p className="text-xs text-slate-400 ml-1">
-                Reinvertir las ganancias genera un efecto exponencial: el dinero crece cada vez más rápido con el tiempo. Mirá el gráfico y vas a entender por qué empezar antes hace toda la diferencia.
-              </p>
-            </div>
+          <div className="flex items-center gap-3 pt-2 border-t border-slate-100">
+            <span className="text-xs font-semibold text-slate-400 whitespace-nowrap w-28">Herramienta</span>
+            <button
+              onClick={() => setActive(HERRAMIENTA.id)}
+              className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-150 ${
+                active === HERRAMIENTA.id ? 'tab-active' : 'tab-inactive'
+              }`}
+            >
+              {HERRAMIENTA.label}
+            </button>
           </div>
         </div>
 
