@@ -40,25 +40,25 @@ export default function Descargables() {
           </p>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-6 items-stretch">
+        <div className="flex flex-col lg:flex-row gap-4">
           {/* Cards */}
-          <div className="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-3 items-start">
+          <div className="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-3">
             {HOJAS.map((h, i) => (
               <div key={i} className={`card flex flex-col gap-2 border ${h.color} hover:shadow-md transition-shadow`}>
                 <div className="flex items-center gap-2">
                   <div className={`text-2xl ${h.iconColor}`}>{h.icono}</div>
                   <h3 className="font-bold text-slate-800 text-sm leading-tight">{h.nombre}</h3>
                 </div>
-                <p className="text-sm text-slate-600 leading-normal">{h.descripcion}</p>
+                <p className="text-sm text-slate-600 leading-normal flex-1">{h.descripcion}</p>
               </div>
             ))}
           </div>
 
-          {/* Botón único */}
-          <div className="flex lg:flex-col items-center justify-center gap-3 lg:w-56 shrink-0">
+          {/* Botón único — misma altura que las cards */}
+          <div className="flex lg:flex-col gap-3 lg:w-52 shrink-0">
             <button
               onClick={() => descargarPlanillaCompleta()}
-              className="flex flex-col items-center justify-center gap-3 w-full btn-primary rounded-2xl py-8 px-6 text-center"
+              className="flex-1 flex flex-col items-center justify-center gap-3 w-full btn-primary rounded-2xl px-6 text-center"
             >
               <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
