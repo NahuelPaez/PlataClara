@@ -3,23 +3,35 @@ import SimuladorForm from '../components/SimuladorForm'
 import SimuladorChart from '../components/SimuladorChart'
 import { formatARS, formatUSD, formatPct } from '../utils/formatters'
 
-const FIELDS = [
-  { id: 'monto',         label: 'Monto en pesos',               type: 'number', unit: '$',   defaultValue: 500000, min: 5000 },
-  { id: 'tc',            label: 'Tipo de cambio CCL actual',     type: 'number', unit: '$/U$S', defaultValue: 1200, min: 1, hint: 'Tipo de cambio al momento de comprar' },
-  { id: 'rendUSD',       label: 'Rendimiento esperado en USD',   type: 'number', unit: '%/año', defaultValue: 15, min: -100, max: 500, hint: 'Variación esperada del activo subyacente en dólares' },
-  { id: 'variacionTC',   label: 'Variación del TC esperada',     type: 'number', unit: '%/año', defaultValue: 20, min: -50, max: 300, hint: 'Cuánto esperás que suba el dólar CCL en el año' },
-  { id: 'meses',         label: 'Horizonte',                      type: 'number', unit: 'meses', defaultValue: 12, min: 1, max: 60 },
+const FIELDS_BASE = [
+  { id: 'monto',   label: 'Monto en pesos',             type: 'number', unit: '$',      defaultValue: 500000, min: 5000 },
+  { id: 'tc',      label: 'Tipo de cambio CCL actual',  type: 'number', unit: '$/U$S',  defaultValue: 1200,   min: 1,    hint: 'Tipo de cambio al momento de comprar' },
+  { id: 'rendUSD', label: 'Rendimiento esperado en USD',type: 'number', unit: '%/año',  defaultValue: 15,     min: -100, max: 500, hint: 'Variación esperada del activo subyacente en dólares' },
 ]
+const FIELD_TC_PCT    = { id: 'variacionTC', label: 'Variación del TC esperada',  type: 'number', unit: '%/año',  defaultValue: 20,   min: -50, max: 300, hint: 'Cuánto esperás que suba el dólar CCL en el año' }
+const FIELD_TC_PRECIO = { id: 'variacionTC', label: 'Precio final del dólar CCL', type: 'number', unit: '$/U$S', defaultValue: 1500, min: 1,           hint: 'Ej: si leíste "dólar a $1700 a fin de año", poné 1700' }
+const FIELD_MESES     = { id: 'meses', label: 'Horizonte', type: 'number', unit: 'meses', defaultValue: 12, min: 1, max: 60 }
 
 export default function Cedears() {
   const [resultado, setResultado] = useState(null)
+  const [tcMode, setTcMode]       = useState('pct') // 'pct' | 'precio'
+
+  const fields = [...FIELDS_BASE, tcMode === 'pct' ? FIELD_TC_PCT : FIELD_TC_PRECIO, FIELD_MESES]
 
   function calcular(v) {
     const monto = Number(v.monto)
     const tc = Number(v.tc)
     const rendUSD = Number(v.rendUSD) / 100
-    const variacionTC = Number(v.variacionTC) / 100
     const meses = Number(v.meses)
+
+    // Convertir precio final → variación anual si corresponde
+    let variacionTC
+    if (tcMode === 'pct') {
+      variacionTC = Number(v.variacionTC) / 100
+    } else {
+      const tcFinal = Number(v.variacionTC)
+      variacionTC = Math.pow(tcFinal / tc, 12 / meses) - 1
+    }
 
     const montoUSD = monto / tc
     const rendMensualUSD = Math.pow(1 + rendUSD, 1 / 12) - 1
@@ -56,7 +68,19 @@ export default function Cedears() {
         <strong className="block mt-1">⚠️ Alta volatilidad. Solo para perfil de riesgo medio-alto.</strong>
       </div>
 
-      <SimuladorForm fields={FIELDS} onCalculate={calcular} />
+      <div className="flex items-center gap-2">
+        <span className="text-xs text-slate-500 font-medium">Ingresá el dólar como:</span>
+        <button onClick={() => { setTcMode('pct'); setResultado(null) }}
+          className={`px-3 py-1 rounded-lg text-xs font-medium transition-all ${tcMode === 'pct' ? 'tab-active' : 'tab-inactive'}`}>
+          % variación anual
+        </button>
+        <button onClick={() => { setTcMode('precio'); setResultado(null) }}
+          className={`px-3 py-1 rounded-lg text-xs font-medium transition-all ${tcMode === 'precio' ? 'tab-active' : 'tab-inactive'}`}>
+          Precio final ($)
+        </button>
+      </div>
+
+      <SimuladorForm key={tcMode} fields={fields} onCalculate={calcular} />
 
       {resultado && (
         <>
