@@ -4,7 +4,7 @@ import ExcelJS from 'exceljs/dist/exceljs.bare.min.js'
 const NARANJA     = 'FFE8910A'
 const NARANJA_HDR = 'FFBF6B00'
 const BLANCO      = 'FFFFFFFF'
-const GRIS_CLARO  = 'FFF2F2F2'
+const GRIS_CLARO  = 'FFD9D9D9'
 const VERDE_TC    = 'FFE2EFDA'
 const VERDE_INPUT = 'FFE8F5E9'
 const AMARILLO_R  = 'FFFFF2CC'
@@ -125,9 +125,13 @@ function buildPresupuesto(wb) {
   const r_tc1 = dato('Tarjeta de Crédito (ítem 1)', Array(12).fill(50000), { bg: VERDE_TC })
   ws.getRow(r_tc1).getCell(1).note = {
     texts: [
-      { font: { bold: true }, text: 'Tip cuotas:\n' },
-      { text: 'Colocá la cuota mensual en cada mes para rastrear hasta cuándo pagás.\n\nEj: heladera $600.000 en 12 cuotas de $50.000 → ingresá $50.000 por mes durante 12 meses.' },
+      { font: { bold: true, size: 10 }, text: 'Tip cuotas:\n' },
+      { font: { size: 10 }, text: 'Colocá la cuota mensual en cada mes para rastrear hasta cuándo pagás.\n\nEj: heladera $600.000 en 12 cuotas de $50.000 → ingresá $50.000 por mes durante 12 meses.' },
     ],
+    anchor: {
+      from: { col: 1, colOff: 228600, row: r_tc1 - 1, rowOff: 0 },
+      to:   { col: 8, colOff: 0,      row: r_tc1 + 6, rowOff: 0 },
+    },
   }
   const r_tc2 = dato('Tarjeta de Crédito (ítem 2)', Array(12).fill(0), { bg: VERDE_TC })
   const r_tc3 = dato('Tarjeta de Crédito (ítem 3)', Array(12).fill(0), { bg: VERDE_TC })
