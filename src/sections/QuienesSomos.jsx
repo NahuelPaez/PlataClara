@@ -39,7 +39,7 @@ export default function QuienesSomos() {
         <div className="flex flex-col lg:flex-row gap-4 mb-4">
           {/* Izquierda: misión + por qué */}
           <div className="flex-1 flex flex-col gap-3">
-            <div className="card flex items-start gap-3">
+            <div className="card flex items-center gap-3">
               <span className="text-2xl flex-shrink-0">🎯</span>
               <div>
                 <h3 className="font-bold text-slate-800 text-sm mb-1">Nuestra misión</h3>
@@ -50,7 +50,7 @@ export default function QuienesSomos() {
                 </p>
               </div>
             </div>
-            <div className="card flex items-start gap-3">
+            <div className="card flex items-center gap-3">
               <span className="text-2xl flex-shrink-0">💡</span>
               <div>
                 <h3 className="font-bold text-slate-800 text-sm mb-1">Por qué lo creamos</h3>
