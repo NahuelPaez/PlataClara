@@ -320,7 +320,9 @@ export default function Hero() {
               y comparás las tasas de los principales bancos y billeteras de Argentina.
               <span className="relative inline-block">
                 Sin jerga, sin vueltas.
-                <span className="absolute left-0 -bottom-0.5 w-full h-0.5 bg-accent rounded-full" />
+                <svg className="absolute left-0 -bottom-1 w-full" viewBox="0 0 200 8" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0,5 Q25,1 50,5 T100,5 T150,5 T200,5" fill="none" stroke="#f59e0b" strokeWidth="2.5" strokeLinecap="round"/>
+                </svg>
               </span>
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-2xl">
