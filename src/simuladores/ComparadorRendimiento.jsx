@@ -238,18 +238,6 @@ export default function ComparadorRendimiento() {
           <p className="text-slate-400 text-sm text-center py-6">No hay datos para este producto todavía.</p>
         ) : (
           <>
-            <p className="text-sm text-slate-500 mb-1">
-              Resultados para <strong>{formatARS(monto, 0)}</strong> en <strong>{prodLabel}</strong>,
-              ordenados de mayor a menor TNA:
-            </p>
-            <p className="text-xs text-slate-400 mb-3">
-              <strong>TNA</strong> (Tasa Nominal Anual) es la tasa que anuncia la entidad. El interés ganado se calcula proporcionalmente para el período indicado.
-              {hayLive && liveTs && (
-                <span className="ml-2 text-green-600 font-medium">
-                  · 🟢 Tasas en vivo — {liveTs.toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit' })}
-                </span>
-              )}
-            </p>
             <div className="overflow-x-auto rounded-2xl border border-slate-100 shadow-sm">
               <table className="w-full text-sm">
                 <thead>
