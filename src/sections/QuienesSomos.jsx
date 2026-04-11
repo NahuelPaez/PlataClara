@@ -67,7 +67,7 @@ export default function QuienesSomos() {
           <div className="card lg:w-80 shrink-0 flex flex-col">
             <h3 className="font-bold text-slate-800 text-sm mb-1">Contacto</h3>
             <p className="text-xs text-slate-500 mb-3">
-              ¿Te quedó alguna duda? ¿Querés que agreguemos algo? Mandanos tu mensaje, leemos todo.
+              Sugerencias, dudas o lo que sea. Leemos todo.
             </p>
             {enviado ? (
               <p className="text-sm text-emerald-600 font-medium">¡Gracias por tu mensaje! Te respondemos a la brevedad.</p>
