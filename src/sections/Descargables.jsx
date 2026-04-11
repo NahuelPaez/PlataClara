@@ -42,14 +42,14 @@ export default function Descargables() {
 
         <div className="flex flex-col lg:flex-row gap-6 items-stretch">
           {/* Cards */}
-          <div className="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div className="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-3 items-start">
             {HOJAS.map((h, i) => (
-              <div key={i} className={`card flex flex-col gap-3 border ${h.color} hover:shadow-md transition-shadow`}>
-                <div className="flex items-center gap-3">
-                  <div className={`text-3xl ${h.iconColor}`}>{h.icono}</div>
+              <div key={i} className={`card flex flex-col gap-2 border ${h.color} hover:shadow-md transition-shadow`}>
+                <div className="flex items-center gap-2">
+                  <div className={`text-2xl ${h.iconColor}`}>{h.icono}</div>
                   <h3 className="font-bold text-slate-800 text-sm leading-tight">{h.nombre}</h3>
                 </div>
-                <p className="text-sm text-slate-600 leading-relaxed flex-1">{h.descripcion}</p>
+                <p className="text-sm text-slate-600 leading-normal">{h.descripcion}</p>
               </div>
             ))}
           </div>
