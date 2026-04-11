@@ -39,23 +39,27 @@ export default function QuienesSomos() {
         <div className="flex flex-col lg:flex-row gap-4 mb-4">
           {/* Izquierda: misión + por qué */}
           <div className="flex-1 flex flex-col gap-3">
-            <div className="card">
-              <div className="text-2xl mb-2">🎯</div>
-              <h3 className="font-bold text-slate-800 text-sm mb-1">Nuestra misión</h3>
-              <p className="text-slate-600 leading-normal text-xs">
-                Democratizar la educación financiera en Argentina. Queremos que cualquier persona,
-                sin importar su nivel de conocimiento, pueda entender qué hacer con su dinero,
-                comparar opciones y tomar mejores decisiones financieras.
-              </p>
+            <div className="card flex items-start gap-3">
+              <span className="text-2xl flex-shrink-0">🎯</span>
+              <div>
+                <h3 className="font-bold text-slate-800 text-sm mb-1">Nuestra misión</h3>
+                <p className="text-slate-600 leading-normal text-xs">
+                  Democratizar la educación financiera en Argentina. Queremos que cualquier persona,
+                  sin importar su nivel de conocimiento, pueda entender qué hacer con su dinero,
+                  comparar opciones y tomar mejores decisiones financieras.
+                </p>
+              </div>
             </div>
-            <div className="card">
-              <div className="text-2xl mb-2">💡</div>
-              <h3 className="font-bold text-slate-800 text-sm mb-1">Por qué lo creamos</h3>
-              <p className="text-slate-600 leading-normal text-xs">
-                En Argentina hay mucha información dispersa y difícil de comparar.
-                Decidimos crear un lugar simple donde cualquier persona pueda entender
-                sus opciones y simular rendimientos antes de tomar decisiones.
-              </p>
+            <div className="card flex items-start gap-3">
+              <span className="text-2xl flex-shrink-0">💡</span>
+              <div>
+                <h3 className="font-bold text-slate-800 text-sm mb-1">Por qué lo creamos</h3>
+                <p className="text-slate-600 leading-normal text-xs">
+                  En Argentina hay mucha información dispersa y difícil de comparar.
+                  Decidimos crear un lugar simple donde cualquier persona pueda entender
+                  sus opciones y simular rendimientos antes de tomar decisiones.
+                </p>
+              </div>
             </div>
           </div>
 
