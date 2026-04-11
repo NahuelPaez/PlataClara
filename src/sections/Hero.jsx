@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef } from 'react'
 
 const ACCESOS = [
-  { label: '📚 Educación Financiera', href: '#educacion',    desc: 'Qué es cada producto'  },
-  { label: '🧮 Simuladores',          href: '#simuladores',  desc: 'Calculá rendimientos'  },
-  { label: '📊 Comparar Tasas',       href: '#comparador',   desc: 'Quién paga más'        },
-  { label: '📥 Descargar Excel',      href: '#descargables', desc: 'Planillas gratis'      },
+  { label: '📊 Comparar Tasas',       href: '#donde-rinde-mas', desc: 'Quién paga más'        },
+  { label: '🧮 Simuladores',          href: '#simuladores',     desc: 'Calculá rendimientos'  },
+  { label: '📚 Educación Financiera', href: '#educacion',       desc: 'Qué es cada producto'  },
+  { label: '📥 Descargar Excel',      href: '#descargables',    desc: 'Planillas gratis'      },
 ]
 
 function scrollTo(e, href) {
