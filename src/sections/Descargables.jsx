@@ -44,11 +44,9 @@ export default function Descargables() {
           {/* Cards */}
           <div className="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-3">
             {HOJAS.map((h, i) => (
-              <div key={i} className={`card flex flex-col gap-2 border ${h.color} hover:shadow-md transition-shadow`}>
-                <div className="flex items-center gap-2">
-                  <div className={`text-2xl ${h.iconColor}`}>{h.icono}</div>
-                  <h3 className="font-bold text-slate-800 text-sm leading-tight">{h.nombre}</h3>
-                </div>
+              <div key={i} className={`card flex flex-col items-center gap-2 border ${h.color} hover:shadow-md transition-shadow text-center`}>
+                <div className={`text-2xl ${h.iconColor}`}>{h.icono}</div>
+                <h3 className="font-bold text-slate-800 text-sm leading-tight">{h.nombre}</h3>
                 <p className="text-sm text-slate-600 leading-normal flex-1">{h.descripcion}</p>
               </div>
             ))}
