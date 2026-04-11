@@ -11,7 +11,7 @@
         {
           "id": "cuenta_remunerada",
           "nombre": "Cuenta Remunerada",
-          "tna": 21.3,
+          "tna": 21.2,
           "tea": null,
           "moneda": "ARS",
           "plazo_min": 1,
@@ -39,12 +39,12 @@
         {
           "id": "cuenta_remunerada",
           "nombre": "Cuenta Remunerada",
-          "tna": 23,
+          "tna": 21,
           "tea": null,
           "moneda": "ARS",
           "plazo_min": 1,
           "plazo_max": 1,
-          "notas": "Tasa Plus: hasta 29% TNA con uso activo"
+          "notas": "Tasa Plus: hasta 27% TNA con uso activo"
         },
         {
           "id": "plazo_fijo_30",
@@ -173,7 +173,7 @@
         {
           "id": "cuenta_remunerada",
           "nombre": "Cuenta Remunerada",
-          "tna": 20,
+          "tna": 19.4,
           "tea": null,
           "moneda": "ARS",
           "plazo_min": 1,
@@ -201,7 +201,7 @@
         {
           "id": "cuenta_remunerada",
           "nombre": "Cuenta Remunerada",
-          "tna": 26,
+          "tna": 25,
           "tea": null,
           "moneda": "ARS",
           "plazo_min": 1,
