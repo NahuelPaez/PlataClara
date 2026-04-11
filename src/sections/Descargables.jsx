@@ -30,7 +30,7 @@ export default function Descargables() {
       <div className="max-w-6xl mx-auto px-4">
         {/* Header */}
         <div className="mb-5">
-          <p className="text-sm font-semibold text-primary-500 uppercase tracking-widest mb-2">
+          <p className="text-xs font-semibold text-primary-500 uppercase tracking-widest mb-1">
             Descargables en Excel
           </p>
           <h2 className="section-title">Herramientas gratis para ordenar tu plata</h2>

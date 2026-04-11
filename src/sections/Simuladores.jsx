@@ -60,7 +60,7 @@ export default function Simuladores() {
       <div className="max-w-6xl mx-auto px-4">
         {/* Header */}
         <div className="mb-8">
-          <p className="text-sm font-semibold text-primary-500 uppercase tracking-widest mb-2">
+          <p className="text-xs font-semibold text-primary-500 uppercase tracking-widest mb-1">
             Simuladores
           </p>
           <h2 className="section-title">Calculá cuánto podés ganar</h2>

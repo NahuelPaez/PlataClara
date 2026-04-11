@@ -17,11 +17,11 @@ export default function Educacion() {
     : productos.filter(p => p.categoria === cat)
 
   return (
-    <section id="educacion" className="bg-slate-50 py-10">
+    <section id="educacion" className="bg-slate-50 py-6">
       <div className="max-w-6xl mx-auto px-4">
         {/* Header */}
         <div className="mb-6">
-          <p className="text-sm font-semibold text-primary-500 uppercase tracking-widest mb-2">
+          <p className="text-xs font-semibold text-primary-500 uppercase tracking-widest mb-1">
             Educación Financiera
           </p>
           <h2 className="section-title">Antes de invertir o ahorrar, entendé qué es cada cosa</h2>

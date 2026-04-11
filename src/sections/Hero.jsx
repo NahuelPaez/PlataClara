@@ -302,20 +302,20 @@ export default function Hero() {
       <div className="absolute -bottom-32 -left-32 w-80 h-80 rounded-full opacity-10 pointer-events-none"
            style={{ background: '#10b981' }} />
 
-      <div className="relative max-w-6xl mx-auto px-4 pt-20 pb-24 md:pt-28 md:pb-32">
+      <div className="relative max-w-6xl mx-auto px-4 pt-12 pb-16 md:pt-16 md:pb-20">
         <div className="flex items-end gap-4 md:gap-8">
 
           <div className="flex-1 min-w-0 flex flex-col justify-center pb-4">
-            <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm text-white text-sm font-medium px-4 py-1.5 rounded-full mb-6 self-start">
+            <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm text-white text-xs font-medium px-3 py-1 rounded-full mb-4 self-start">
               <span>🇦🇷</span>
               <span>Finanzas personales en argentino</span>
             </div>
-            <h1 className="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-5">
+            <h1 className="text-3xl md:text-5xl font-extrabold text-white leading-tight mb-4">
               Tu plata,{' '}
               <span className="text-amber-300">más clara</span>{' '}
               que nunca.
             </h1>
-            <p className="text-lg md:text-xl text-white/80 max-w-xl mb-10 leading-relaxed">
+            <p className="text-base md:text-lg text-white/80 max-w-xl mb-7 leading-relaxed">
               Aprendé qué es cada instrumento financiero, simulá cuánto podés ganar
               y comparás las tasas de los principales bancos y billeteras de Argentina.
               <span className="relative inline-block">
@@ -326,7 +326,7 @@ export default function Hero() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-2xl">
               {ACCESOS.map(a => (
                 <a key={a.href} href={a.href} onClick={e => scrollTo(e, a.href)}
-                   className="flex flex-col items-center justify-center gap-1 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-2xl px-4 py-4 text-white transition-all duration-200 group text-center w-full">
+                   className="flex flex-col items-center justify-center gap-1 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-2xl px-3 py-3 text-white transition-all duration-200 group text-center w-full">
                   <span className="font-semibold text-sm group-hover:scale-105 transition-transform">{a.label}</span>
                   <span className="text-xs text-white/60">{a.desc}</span>
                 </a>

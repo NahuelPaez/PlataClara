@@ -2,10 +2,10 @@ import ComparadorRendimiento from '../simuladores/ComparadorRendimiento'
 
 export default function DondeRindeMas() {
   return (
-    <section id="donde-rinde-mas" className="py-16 bg-slate-50">
+    <section id="donde-rinde-mas" className="py-8 bg-slate-50">
       <div className="max-w-6xl mx-auto px-4">
-        <div className="mb-8">
-          <p className="text-sm font-semibold text-primary-500 uppercase tracking-widest mb-2">
+        <div className="mb-5">
+          <p className="text-xs font-semibold text-primary-500 uppercase tracking-widest mb-1">
             Comparador
           </p>
           <h2 className="section-title">¿Dónde rinde más tu plata?</h2>

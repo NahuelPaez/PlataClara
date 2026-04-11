@@ -30,7 +30,7 @@ export default function QuienesSomos() {
     <section id="nosotros" className="py-8 bg-white">
       <div className="max-w-4xl mx-auto px-4">
         <div className="text-center mb-6">
-          <p className="text-sm font-semibold text-primary-500 uppercase tracking-widest mb-2">
+          <p className="text-xs font-semibold text-primary-500 uppercase tracking-widest mb-1">
             Quiénes Somos
           </p>
           <h2 className="section-title text-center">Finanzas para todos, sin vueltas</h2>
