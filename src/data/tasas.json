@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-14",
+  "lastUpdated": "2026-04-15",
   "nota": "Tasas referenciales actualizadas manualmente. Verificar en el sitio oficial de cada entidad antes de operar.",
   "entidades": [
     {
@@ -411,7 +411,7 @@
         {
           "id": "plazo_fijo_30",
           "nombre": "Plazo Fijo 30 días",
-          "tna": 18,
+          "tna": 16.5,
           "tea": null,
           "moneda": "ARS",
           "plazo_min": 30,
@@ -421,7 +421,7 @@
         {
           "id": "plazo_fijo_60",
           "nombre": "Plazo Fijo 60 días",
-          "tna": 18,
+          "tna": 16.5,
           "tea": null,
           "moneda": "ARS",
           "plazo_min": 60,
