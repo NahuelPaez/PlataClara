@@ -1,12 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
 
-const ACCESOS = [
-  { label: '📊 Tasas y USD',           href: '#donde-rinde-mas', desc: 'Tasas y dólar oficial' },
-  { label: '🧮 Simuladores',          href: '#simuladores',     desc: 'Calculá rendimientos'  },
-  { label: '📚 Educación Financiera', href: '#educacion',       desc: 'Qué es cada producto'  },
-  { label: '📥 Descargar Excel',      href: '#descargables',    desc: 'Planillas gratis'      },
-]
-
 function scrollTo(e, href) {
   e.preventDefault()
   document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })
@@ -325,15 +318,6 @@ export default function Hero() {
                 </svg>
               </span>
             </p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-2xl">
-              {ACCESOS.map(a => (
-                <a key={a.href} href={a.href} onClick={e => scrollTo(e, a.href)}
-                   className="flex flex-col items-center justify-center gap-1 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-2xl px-3 py-3 text-white transition-all duration-200 group text-center w-full">
-                  <span className="font-semibold text-sm group-hover:scale-105 transition-transform">{a.label}</span>
-                  <span className="text-xs text-white/60">{a.desc}</span>
-                </a>
-              ))}
-            </div>
           </div>
 
           <div className="hidden lg:block flex-shrink-0 mr-10 translate-y-4">
