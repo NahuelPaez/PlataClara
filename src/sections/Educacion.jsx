@@ -3,18 +3,15 @@ import ProductCard from '../components/ProductCard'
 import productos from '../data/productos.json'
 
 const CATEGORIAS = [
-  { id: 'todas',    label: 'Todos'       },
-  { id: 'ahorro',   label: '💰 Ahorro'   },
-  { id: 'inversion',label: '📈 Inversión' },
-  { id: 'dolar',    label: '💵 Dólar'    },
+  { id: 'ahorro',   label: '💰 Ahorro'        },
+  { id: 'inversion',label: '📈 Inversión'      },
+  { id: 'dolar',    label: '💵 Tipos de dólar' },
 ]
 
 export default function Educacion() {
   const [cat, setCat] = useState('ahorro')
 
-  const filtrados = cat === 'todas'
-    ? productos
-    : productos.filter(p => p.categoria === cat)
+  const filtrados = productos.filter(p => p.categoria === cat)
 
   return (
     <section id="educacion" className="bg-slate-50 py-6">
