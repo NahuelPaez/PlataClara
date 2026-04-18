@@ -33,6 +33,7 @@ const FIELDS_USD = [
 ]
 
 const GLOSARIO = [
+  { term: '📈 ¿Qué es un Plazo Fijo UVA?', def: 'Tu capital se ajusta mes a mes por la inflación (CER) más una pequeña tasa real positiva. Protege tu poder adquisitivo si la inflación es alta. Plazo mínimo: 90 días en la mayoría de los bancos. El Banco Nación ofrece desde 30 días.' },
   { term: '📊 TNA (Tasa Nominal Anual)', def: 'Tasa de interés anual sin capitalización. Es la que publican los bancos para sus plazos fijos. Para calcular cuánto ganás en N días: Capital × TNA / 365 × N.' },
   { term: '📈 UVA (Unidad de Valor Adquisitivo)', def: 'Unidad de indexación que ajusta por inflación usando el índice CER (Coeficiente de Estabilización de Referencia). Un plazo fijo UVA te garantiza que tu capital no pierda poder adquisitivo, más una pequeña tasa real positiva.' },
   { term: '🔒 CER (Coeficiente de Estabilización de Referencia)', def: 'Índice publicado por el BCRA que sigue la inflación oficial (IPC). Es la base del ajuste de los plazos fijos UVA y varios bonos soberanos.' },
@@ -78,14 +79,6 @@ export default function PlazoFijo({ initialTipo = 'pesos' }) {
 
   return (
     <div className="space-y-3">
-      {tipo === 'uva' && (
-        <div className="bg-amber-50 border border-amber-100 rounded-xl px-4 py-3 text-sm text-amber-700">
-          <strong>Plazo Fijo UVA:</strong> Tu capital se ajusta mes a mes por la inflación (CER)
-          más una pequeña tasa real positiva. Protege tu poder adquisitivo si la inflación es alta.
-          Plazo mínimo: 90 días en la mayoría de los bancos. El Banco Nación ofrece desde 30 días.
-        </div>
-      )}
-
       <GlosarioSimulador titulo="Glosario: TNA, UVA y CER" terminos={GLOSARIO} />
 
       <SimuladorForm key={tipo} fields={fields} onCalculate={calcular} />
