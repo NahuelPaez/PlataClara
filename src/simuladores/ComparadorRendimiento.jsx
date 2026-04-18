@@ -265,8 +265,7 @@ export default function ComparadorRendimiento() {
                     <tr className="bg-slate-50 text-slate-500 text-xs uppercase tracking-wide">
                       <th className="text-left px-4 py-3 w-8">#</th>
                       <th className="text-left px-4 py-3">Entidad</th>
-                      <th className="text-right px-4 py-3">Compra</th>
-                      <th className="text-right px-4 py-3">Venta</th>
+                      <th className="text-right px-4 py-3">Venta (precio al que comprás)</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -276,7 +275,6 @@ export default function ComparadorRendimiento() {
                           {i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : i + 1}
                         </td>
                         <td className="px-4 py-3 font-medium text-slate-800 capitalize">{d.nombre}</td>
-                        <td className="px-4 py-3 text-right text-slate-600 font-semibold">${d.compra.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
                         <td className="px-4 py-3 text-right font-bold text-primary-600">${d.venta.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
                       </tr>
                     ))}
