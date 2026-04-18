@@ -87,36 +87,6 @@
       "dolar_oficial_venta": null,
       "productos": [
         {
-          "id": "plazo_fijo_30",
-          "nombre": "Plazo Fijo 30 días",
-          "tna": 22,
-          "tea": null,
-          "moneda": "ARS",
-          "plazo_min": 30,
-          "plazo_max": 30,
-          "notas": "Desde $1.000"
-        },
-        {
-          "id": "plazo_fijo_60",
-          "nombre": "Plazo Fijo 60 días",
-          "tna": 22.5,
-          "tea": null,
-          "moneda": "ARS",
-          "plazo_min": 60,
-          "plazo_max": 60,
-          "notas": ""
-        },
-        {
-          "id": "plazo_fijo_uva",
-          "nombre": "Plazo Fijo UVA",
-          "tna": null,
-          "tea": null,
-          "moneda": "ARS",
-          "plazo_min": 90,
-          "plazo_max": 365,
-          "notas": "CER + 1%"
-        },
-        {
           "id": "fci_mm",
           "nombre": "FCI Money Market",
           "tna": 23,

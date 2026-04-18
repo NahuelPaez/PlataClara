@@ -25,7 +25,6 @@ const PF_MAP = {
   'BANCO DE GALICIA Y BUENOS AIRES S.A.':                            'galicia',
   'BANCO BBVA ARGENTINA S.A.':                                       'bbva',
   'INDUSTRIAL AND COMMERCIAL BANK OF CHINA (ARGENTINA) S.A.U.':     'icbc',
-  'BANCO DEL SOL S.A.':                                              'brubank',
   'UALA':                                                            'uala',
 }
 

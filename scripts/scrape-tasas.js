@@ -21,7 +21,6 @@ const BANCO_MAP = [
   { patron: 'bbva', id: 'bbva' },
   { patron: 'icbc', id: 'icbc' },
   { patron: 'supervielle', id: 'supervielle' },
-  { patron: 'brubank', id: 'brubank' },
 ]
 
 // Mapeo billeteras en comparatasas → id en tasas.json
