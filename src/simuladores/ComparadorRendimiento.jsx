@@ -262,12 +262,7 @@ export default function ComparadorRendimiento() {
                       <td className="px-4 py-3">
                         <div className="flex items-center gap-2 font-medium text-slate-800">
                           <span>{r.emoji}</span>
-                          <div>
-                            <span>{r.entidad}</span>
-                            <span className={`ml-2 text-xs px-1.5 py-0.5 rounded-full ${r.tipo === 'banco' ? 'bg-blue-100 text-blue-600' : 'bg-purple-100 text-purple-600'}`}>
-                              {r.tipo}
-                            </span>
-                          </div>
+                          <span>{r.entidad}</span>
                         </div>
                       </td>
                       <td className="px-4 py-3 text-right font-bold text-primary-600">{formatPct(r.tna)}</td>
