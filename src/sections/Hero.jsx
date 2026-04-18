@@ -295,8 +295,8 @@ export default function Hero() {
       <div className="absolute -bottom-32 -left-32 w-80 h-80 rounded-full opacity-10 pointer-events-none"
            style={{ background: '#10b981' }} />
 
-      <div className="relative max-w-6xl mx-auto px-4 pt-12 pb-16 md:pt-16 md:pb-20">
-        <div className="flex items-end gap-4 md:gap-8">
+      <div className="relative max-w-6xl mx-auto px-4 pt-6 pb-8 md:pt-8 md:pb-10">
+        <div className="flex items-center gap-4 md:gap-8">
 
           <div className="flex-1 min-w-0 flex flex-col justify-center pb-4">
             <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm text-white text-xs font-medium px-3 py-1 rounded-full mb-4 self-start">
@@ -320,8 +320,8 @@ export default function Hero() {
             </p>
           </div>
 
-          <div className="hidden lg:block flex-shrink-0 mr-10 translate-y-4">
-            <div className="relative w-64 h-[500px]" style={{ isolation: 'isolate' }}>
+          <div className="hidden lg:block flex-shrink-0 mr-10">
+            <div className="relative w-56 h-[320px]" style={{ isolation: 'isolate' }}>
               {/* Sol — detrás del árbol */}
               <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 0 }}>
                 <RisingSun fillPct={fillPct} />
