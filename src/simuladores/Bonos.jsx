@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import SimuladorForm from '../components/SimuladorForm'
 import SimuladorChart from '../components/SimuladorChart'
+import GlosarioSimulador from '../components/GlosarioSimulador'
 import { formatARS, formatPct } from '../utils/formatters'
 
 const FIELDS = [
@@ -15,9 +16,14 @@ const FIELDS = [
   { id: 'anios',  label: 'Maturity (años a vencimiento)', type: 'number', unit: 'años', defaultValue: 3, min: 1, max: 30, hint: 'Tiempo hasta que el bono vence y devuelve el capital' },
 ]
 
+const GLOSARIO = [
+  { term: '📜 ¿Qué son los Bonos y ONs?', def: 'Un bono es un préstamo que le hacés al Estado o a una empresa. A cambio, te pagan intereses periódicos (cupones) y te devuelven el capital al vencimiento. La TIR es el rendimiento anual efectivo considerando el precio de compra.' },
+  { term: '📐 Paridad (precio del bono)', def: 'Es el precio al que cotiza el bono expresado como porcentaje de su Valor Nominal (VN).\n• Paridad = 100%: el bono cotiza "a la par" → pagás exactamente el VN.\n• Paridad < 100%: cotiza "bajo la par" → pagás menos que el VN. Podés ganar más al vencimiento.\n• Paridad > 100%: cotiza "sobre la par" → pagás más que el VN.\nEjemplo: un bono con VN $1.000 y paridad 95% se compra a $950.' },
+  { term: '📅 Maturity (plazo a vencimiento)', def: 'Es la cantidad de años que faltan para que el bono venza y el emisor devuelva el capital (VN). Cuanto mayor es el maturity, mayor es la sensibilidad del bono a cambios en las tasas de interés. Bonos de corto plazo (1-3 años): menos riesgo de tasa. Bonos de largo plazo (10+ años): más potencial pero más volatilidad.' },
+]
+
 export default function Bonos() {
   const [resultado, setResultado] = useState(null)
-  const [showGlosario, setShowGlosario] = useState(false)
 
   function calcular(v) {
     const monto = Number(v.monto)
@@ -41,57 +47,7 @@ export default function Bonos() {
 
   return (
     <div className="space-y-6">
-      <div className="bg-amber-50 border border-amber-100 rounded-xl px-4 py-3 text-sm text-amber-700">
-        <strong>Bonos y ONs:</strong> Un bono es un préstamo que le hacés al Estado o a una empresa.
-        A cambio, te pagan intereses periódicos (cupones) y te devuelven el capital al vencimiento.
-        La <strong>TIR</strong> es el rendimiento anual efectivo considerando el precio de compra.
-      </div>
-
-      {/* Glosario desplegable */}
-      <div className="border border-slate-200 rounded-xl overflow-hidden">
-        <button
-          type="button"
-          onClick={() => setShowGlosario(g => !g)}
-          className="w-full flex items-center justify-between px-4 py-3 bg-slate-50 hover:bg-slate-100 transition-colors text-sm font-medium text-slate-700"
-        >
-          <span>📖 Glosario: Paridad y Maturity</span>
-          <svg
-            className={`w-4 h-4 text-slate-400 transition-transform ${showGlosario ? 'rotate-180' : ''}`}
-            fill="none" stroke="currentColor" viewBox="0 0 24 24"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-          </svg>
-        </button>
-
-        {showGlosario && (
-          <div className="px-4 py-4 bg-white space-y-3 text-sm text-slate-600 border-t border-slate-100">
-            <div>
-              <p className="font-semibold text-slate-700 mb-1">📐 Paridad (precio del bono)</p>
-              <p>
-                Es el precio al que cotiza el bono expresado como porcentaje de su Valor Nominal (VN).
-                <br />
-                • <strong>Paridad = 100%</strong>: el bono cotiza "a la par" → pagás exactamente el VN.
-                <br />
-                • <strong>Paridad &lt; 100%</strong>: cotiza "bajo la par" → pagás menos que el VN. Podés ganar más al vencimiento.
-                <br />
-                • <strong>Paridad &gt; 100%</strong>: cotiza "sobre la par" → pagás más que el VN.
-                <br />
-                Ejemplo: un bono con VN $1.000 y paridad 95% se compra a $950.
-              </p>
-            </div>
-            <div className="border-t border-slate-50 pt-3">
-              <p className="font-semibold text-slate-700 mb-1">📅 Maturity (plazo a vencimiento)</p>
-              <p>
-                Es la cantidad de años que faltan para que el bono venza y el emisor devuelva el capital (VN).
-                Cuanto mayor es el maturity, mayor es la sensibilidad del bono a cambios en las tasas de interés.
-                <br />
-                Bonos de <strong>corto plazo</strong> (1-3 años): menos riesgo de tasa.
-                Bonos de <strong>largo plazo</strong> (10+ años): más potencial pero más volatilidad.
-              </p>
-            </div>
-          </div>
-        )}
-      </div>
+      <GlosarioSimulador titulo="Glosario: Paridad y Maturity" terminos={GLOSARIO} />
 
       <SimuladorForm fields={FIELDS} onCalculate={calcular} />
 
