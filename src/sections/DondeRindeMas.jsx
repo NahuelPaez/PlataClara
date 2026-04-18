@@ -9,9 +9,6 @@ export default function DondeRindeMas() {
             Comparador
           </p>
           <h2 className="section-title">Tasas y cotización USD oficial</h2>
-          <p className="section-subtitle">
-            Compará tasas de bancos y billeteras, y el precio del dólar oficial en cada entidad.
-          </p>
         </div>
 
         <div className="mb-4 bg-amber-50 border border-amber-200 rounded-2xl px-5 py-3 flex items-start gap-3">
