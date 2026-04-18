@@ -122,8 +122,7 @@
     "desdeARS": 5000,
     "ventajas": ["Exposición a acciones globales en pesos", "Si el dólar sube, el precio en pesos también sube", "Liquidez en bolsa local"],
     "desventajas": ["Alta volatilidad — el precio puede subir o bajar mucho", "Riesgo de mercado externo", "Si el dólar baja, el precio en pesos puede caer"],
-    "disponibleEn": ["Broker"],
-    "simulador": "cedears"
+    "disponibleEn": ["Broker"]
   },
   {
     "id": "acciones",

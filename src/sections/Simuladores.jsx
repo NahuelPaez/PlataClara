@@ -4,7 +4,6 @@ import PlazoFijo           from '../simuladores/PlazoFijo'
 import FCI                 from '../simuladores/FCI'
 import Caucion             from '../simuladores/Caucion'
 import Bonos               from '../simuladores/Bonos'
-import Cedears             from '../simuladores/Cedears'
 import InteresCompuesto    from '../simuladores/InteresCompuesto'
 
 const GRUPOS = [
@@ -27,14 +26,6 @@ const GRUPOS = [
     dot: 'bg-amber-500',
     simuladores: [
       { id: 'bonos',   label: '📜 Bonos / ONs', component: Bonos },
-    ],
-  },
-  {
-    riesgo: 'Riesgo alto',
-    color: 'text-red-500',
-    dot: 'bg-red-500',
-    simuladores: [
-      { id: 'cedears', label: '🌎 CEDEARs', component: Cedears },
     ],
   },
 ]
