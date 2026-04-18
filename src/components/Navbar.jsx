@@ -3,7 +3,7 @@ import { useState } from 'react'
 const LINKS = [
   { label: 'Tasas y cotización USD',  href: '#donde-rinde-mas' },
   { label: 'Simuladores',                 href: '#simuladores'     },
-  { label: '¿Cómo funciona cada producto?', href: '#educacion'     },
+  { label: 'Educación financiera',           href: '#educacion'     },
   { label: 'Plantillas Excel',            href: '#descargables'    },
   { label: 'Nosotros',                    href: '#nosotros'        },
 ]
