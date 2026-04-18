@@ -44,7 +44,7 @@ export default function Caucion() {
 
   return (
     <div className="space-y-6">
-      <GlosarioSimulador titulo="Glosario: caución, tasa y garantía" terminos={GLOSARIO} />
+      <GlosarioSimulador titulo="Educación financiera" terminos={GLOSARIO} />
 
       <SimuladorForm fields={FIELDS} onCalculate={calcular} />
 

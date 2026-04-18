@@ -68,7 +68,7 @@ export default function Cartera() {
 
   return (
     <div className="space-y-6">
-      <GlosarioSimulador titulo="¿Cómo funciona este simulador?" terminos={GLOSARIO} />
+      <GlosarioSimulador titulo="Educación financiera" terminos={GLOSARIO} />
 
       {/* Sliders */}
       <div className="space-y-4">

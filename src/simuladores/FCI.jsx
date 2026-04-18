@@ -30,7 +30,7 @@ export default function FCI() {
 
   return (
     <div className="space-y-6">
-      <GlosarioSimulador titulo="Glosario: FCI, T+0/T+1 y cuotapartes" terminos={GLOSARIO} />
+      <GlosarioSimulador titulo="Educación financiera" terminos={GLOSARIO} />
 
       <SimuladorForm fields={FIELDS} onCalculate={calcular} />
 

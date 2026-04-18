@@ -47,7 +47,7 @@ export default function Bonos() {
 
   return (
     <div className="space-y-6">
-      <GlosarioSimulador titulo="Glosario: Paridad y Maturity" terminos={GLOSARIO} />
+      <GlosarioSimulador titulo="Educación financiera" terminos={GLOSARIO} />
 
       <SimuladorForm fields={FIELDS} onCalculate={calcular} />
 

@@ -32,7 +32,7 @@ export default function CuentaRemunerada() {
 
   return (
     <div className="space-y-6">
-      <GlosarioSimulador titulo="Glosario: TNA, TEA y acreditación diaria" terminos={GLOSARIO} />
+      <GlosarioSimulador titulo="Educación financiera" terminos={GLOSARIO} />
 
       <SimuladorForm fields={FIELDS} onCalculate={calcular} />
 

@@ -83,7 +83,7 @@ export default function PlazoFijo({ initialTipo = 'pesos' }) {
   return (
     <div className="space-y-3">
       <GlosarioSimulador
-        titulo={tipo === 'uva' ? 'Glosario: UVA y CER' : 'Glosario: TNA'}
+        titulo="Educación financiera"
         terminos={tipo === 'uva' ? GLOSARIO_UVA : GLOSARIO_PESOS}
       />
 

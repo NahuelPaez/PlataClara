@@ -62,7 +62,7 @@ export default function InteresCompuesto() {
 
   return (
     <div className="space-y-6">
-      <GlosarioSimulador titulo="¿Cómo funciona este simulador?" terminos={GLOSARIO} />
+      <GlosarioSimulador titulo="Educación financiera" terminos={GLOSARIO} />
 
       <SimuladorForm key={unidad} fields={fields} onCalculate={calcular} />
 

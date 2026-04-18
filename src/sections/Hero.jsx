@@ -320,18 +320,6 @@ export default function Hero() {
             </p>
           </div>
 
-          <div className="hidden lg:block flex-shrink-0 mr-10">
-            <div className="relative w-56 h-[320px]" style={{ isolation: 'isolate' }}>
-              {/* Sol — detrás del árbol */}
-              <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 0 }}>
-                <RisingSun fillPct={fillPct} />
-              </div>
-              {/* Árbol — delante */}
-              <div className="relative" style={{ zIndex: 1 }}>
-                <MoneyPlant fillPct={fillPct} />
-              </div>
-            </div>
-          </div>
 
         </div>
       </div>

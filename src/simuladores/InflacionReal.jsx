@@ -68,7 +68,7 @@ export default function InflacionReal() {
 
   return (
     <div className="space-y-6">
-      <GlosarioSimulador titulo="¿Cómo funciona este simulador?" terminos={GLOSARIO} />
+      <GlosarioSimulador titulo="Educación financiera" terminos={GLOSARIO} />
 
       <SimuladorForm fields={FIELDS} onCalculate={calcular} />
 
