@@ -5,6 +5,7 @@ import { formatARS, formatPct, calcularPlazoFijo } from '../utils/formatters'
 const PRODUCTOS_DISPONIBLES = [
   { id: 'cuenta_remunerada', label: 'Liquidez inmediata', dias: 30 },
   { id: 'plazo_fijo_30',     label: 'Plazo Fijo 30 días', dias: 30 },
+  { id: 'dolar_oficial',     label: 'Cotización USD oficial' },
 ]
 
 // Entidades cuya tasa de liquidez inmediata viene 100% del FCI "otros" de argentinadatos
@@ -36,6 +37,8 @@ export default function ComparadorRendimiento() {
   const [otrosLive, setOtrosLive]   = useState({})  // liquidez inmediata
   const [pfLive, setPfLive]         = useState({})  // plazo fijo 30d
   const [liveTs, setLiveTs]         = useState(null)
+  const [dolarData, setDolarData]   = useState([])  // cotización USD por entidad
+  const [dolarLoading, setDolarLoading] = useState(false)
 
   // Fetch tasas en vivo desde argentinadatos
   useEffect(() => {
@@ -108,6 +111,22 @@ export default function ComparadorRendimiento() {
       setLiveTs(new Date())
     })
   }, [])
+
+  // Fetch cotización dólar cuando se selecciona esa pestaña
+  useEffect(() => {
+    if (productoId !== 'dolar_oficial') return
+    setDolarLoading(true)
+    fetch('https://api.argentinadatos.com/v1/cotizaciones/dolares')
+      .then(r => r.json())
+      .then(data => {
+        const filtrados = data
+          .filter(d => d.compra > 0 && d.venta > 0)
+          .sort((a, b) => a.venta - b.venta)
+        setDolarData(filtrados)
+      })
+      .catch(() => {})
+      .finally(() => setDolarLoading(false))
+  }, [productoId])
 
   function handleMontoChange(raw) {
     const digits = raw.replace(/[^\d]/g, '')
@@ -200,7 +219,7 @@ export default function ComparadorRendimiento() {
   return (
     <div className="space-y-6">
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div className={`grid gap-4 ${productoId === 'dolar_oficial' ? 'grid-cols-1 sm:grid-cols-1 max-w-xs' : 'grid-cols-1 sm:grid-cols-2'}`}>
         <div>
           <label className="text-sm font-medium text-slate-600 block mb-1">Producto</label>
           <select
@@ -214,24 +233,60 @@ export default function ComparadorRendimiento() {
           </select>
         </div>
 
-        <div>
-          <label className="text-sm font-medium text-slate-600 block mb-1">Monto</label>
-          <div className="relative">
-            <input
-              type="text"
-              inputMode="numeric"
-              className="input-field pr-8"
-              value={montoDisplay}
-              placeholder="100.000"
-              onChange={e => handleMontoChange(e.target.value)}
-            />
-            <span className="absolute right-4 top-1/2 -translate-y-1/2 text-sm text-slate-400 pointer-events-none">$</span>
+        {productoId !== 'dolar_oficial' && (
+          <div>
+            <label className="text-sm font-medium text-slate-600 block mb-1">Monto</label>
+            <div className="relative">
+              <input
+                type="text"
+                inputMode="numeric"
+                className="input-field pr-8"
+                value={montoDisplay}
+                placeholder="100.000"
+                onChange={e => handleMontoChange(e.target.value)}
+              />
+              <span className="absolute right-4 top-1/2 -translate-y-1/2 text-sm text-slate-400 pointer-events-none">$</span>
+            </div>
           </div>
-        </div>
+        )}
       </div>
 
       <div>
-        {resultados.length === 0 ? (
+        {productoId === 'dolar_oficial' ? (
+          dolarLoading ? (
+            <p className="text-slate-400 text-sm text-center py-6">Cargando cotizaciones...</p>
+          ) : dolarData.length === 0 ? (
+            <p className="text-slate-400 text-sm text-center py-6">No se pudieron cargar las cotizaciones.</p>
+          ) : (
+            <>
+              <div className="overflow-x-auto rounded-2xl border border-slate-100 shadow-sm">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="bg-slate-50 text-slate-500 text-xs uppercase tracking-wide">
+                      <th className="text-left px-4 py-3 w-8">#</th>
+                      <th className="text-left px-4 py-3">Entidad</th>
+                      <th className="text-right px-4 py-3">Compra</th>
+                      <th className="text-right px-4 py-3">Venta</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {dolarData.map((d, i) => (
+                      <tr key={d.casa} className={`border-t border-slate-50 ${i < 3 ? 'bg-primary-50/40' : 'hover:bg-slate-50'} transition-colors`}>
+                        <td className="px-4 py-3 font-bold text-slate-400">
+                          {i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : i + 1}
+                        </td>
+                        <td className="px-4 py-3 font-medium text-slate-800 capitalize">{d.nombre}</td>
+                        <td className="px-4 py-3 text-right text-slate-600 font-semibold">${d.compra.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                        <td className="px-4 py-3 text-right font-bold text-primary-600">${d.venta.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <p className="text-xs text-slate-400 mt-3 text-center">Cotizaciones en tiempo real · Ordenadas de menor a mayor precio de venta.</p>
+            </>
+          )
+        ) : resultados.length === 0 ? (
           <p className="text-slate-400 text-sm text-center py-6">No hay datos para este producto todavía.</p>
         ) : (
           <>
@@ -249,10 +304,7 @@ export default function ComparadorRendimiento() {
                 </thead>
                 <tbody>
                   {resultados.map((r, i) => (
-                    <tr
-                      key={r.entidad}
-                      className={`border-t border-slate-50 ${i < 3 ? 'bg-primary-50/40' : 'hover:bg-slate-50'} transition-colors`}
-                    >
+                    <tr key={r.entidad} className={`border-t border-slate-50 ${i < 3 ? 'bg-primary-50/40' : 'hover:bg-slate-50'} transition-colors`}>
                       <td className="px-4 py-3 font-bold text-slate-400">
                         {i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : i + 1}
                       </td>
