@@ -226,7 +226,7 @@
       "nombre": "Banco Nación",
       "tipo": "banco",
       "emoji": "🏛️",
-      "dolar_oficial_venta": null,
+      "dolar_oficial_venta": 1390,
       "productos": [
         {
           "id": "plazo_fijo_30",
