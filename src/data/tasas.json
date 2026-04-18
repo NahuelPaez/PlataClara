@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-17",
+  "lastUpdated": "2026-04-18",
   "nota": "Tasas referenciales actualizadas manualmente. Verificar en el sitio oficial de cada entidad antes de operar.",
   "entidades": [
     {
@@ -11,7 +11,7 @@
         {
           "id": "cuenta_remunerada",
           "nombre": "Cuenta Remunerada",
-          "tna": 21.2,
+          "tna": 20.8,
           "tea": null,
           "moneda": "ARS",
           "plazo_min": 1,
