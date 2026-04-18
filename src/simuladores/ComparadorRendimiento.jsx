@@ -199,10 +199,6 @@ export default function ComparadorRendimiento() {
 
   return (
     <div className="space-y-6">
-      <div className="bg-blue-50 border border-blue-100 rounded-xl px-4 py-3 text-sm text-blue-700">
-        <strong>¿Dónde rinde más mi plata?</strong> Ingresá un monto, elegí el producto,
-        y te mostramos cuánto ganarías en cada entidad, ordenado de mayor a menor rendimiento.
-      </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
