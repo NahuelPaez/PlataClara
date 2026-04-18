@@ -116,11 +116,11 @@ export default function ComparadorRendimiento() {
   useEffect(() => {
     if (productoId !== 'dolar_oficial') return
     setDolarLoading(true)
-    fetch('https://api.argentinadatos.com/v1/cotizaciones/dolares')
+    fetch('https://dolarapi.com/v1/dolares')
       .then(r => r.json())
       .then(data => {
         const filtrados = data
-          .filter(d => d.compra > 0 && d.venta > 0)
+          .filter(d => d.venta > 0)
           .sort((a, b) => a.venta - b.venta)
         setDolarData(filtrados)
       })
