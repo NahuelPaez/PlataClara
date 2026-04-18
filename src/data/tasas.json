@@ -124,7 +124,7 @@
           "moneda": "ARS",
           "plazo_min": 1,
           "plazo_max": 1,
-          "notas": "Disponible el mismo día"
+          "notas": "Disponible al día hábil siguiente"
         }
       ]
     },
