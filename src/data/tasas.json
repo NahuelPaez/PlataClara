@@ -135,6 +135,7 @@
         {
           "id": "cuenta_remunerada",
           "nombre": "Cuenta Remunerada",
+          "tag": "Frascos",
           "tna": 21,
           "tea": null,
           "moneda": "ARS",

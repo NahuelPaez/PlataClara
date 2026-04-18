@@ -176,6 +176,7 @@ export default function ComparadorRendimiento() {
           entidad: entidad.nombre,
           tipo: entidad.tipo,
           emoji: entidad.emoji,
+          tag: prod.tag || '',
           tna,
           interes: r.interes,
           total: r.total,
@@ -262,7 +263,10 @@ export default function ComparadorRendimiento() {
                       <td className="px-4 py-3">
                         <div className="flex items-center gap-2 font-medium text-slate-800">
                           <span>{r.emoji}</span>
-                          <span>{r.entidad}</span>
+                          <span>
+                            {r.entidad}
+                            {r.tag && <span className="ml-1 text-xs text-slate-400">({r.tag})</span>}
+                          </span>
                         </div>
                       </td>
                       <td className="px-4 py-3 text-right font-bold text-primary-600">{formatPct(r.tna)}</td>
