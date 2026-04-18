@@ -85,16 +85,6 @@
       "emoji": "🔵",
       "productos": [
         {
-          "id": "cuenta_remunerada",
-          "nombre": "Cuenta Remunerada",
-          "tna": 21,
-          "tea": null,
-          "moneda": "ARS",
-          "plazo_min": 1,
-          "plazo_max": 1,
-          "notas": ""
-        },
-        {
           "id": "plazo_fijo_30",
           "nombre": "Plazo Fijo 30 días",
           "tna": 22,
