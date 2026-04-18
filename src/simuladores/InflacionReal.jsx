@@ -1,7 +1,13 @@
 import { useState } from 'react'
 import SimuladorForm from '../components/SimuladorForm'
 import SimuladorChart from '../components/SimuladorChart'
+import GlosarioSimulador from '../components/GlosarioSimulador'
 import { calcularTasaReal, formatARS, formatPct } from '../utils/formatters'
+
+const GLOSARIO = [
+  { term: '📉 Rendimiento real vs nominal', def: 'Una tasa del 40% anual suena alta, pero si la inflación es del 60% anual, en realidad perdés poder adquisitivo. Este simulador usa la ecuación de Fisher para mostrarte el rendimiento real de tu inversión.' },
+  { term: '📊 Ecuación de Fisher', def: 'Fórmula que calcula el rendimiento real: (1 + tasa nominal) / (1 + inflación) - 1. Permite saber si tu inversión realmente ganó o perdió contra la inflación.' },
+]
 
 // Referencia de inflación mensual estimada (INDEC). Actualizar cuando salga el dato.
 const INFLACION_REFERENCIA = 3.2
@@ -62,12 +68,7 @@ export default function InflacionReal() {
 
   return (
     <div className="space-y-6">
-      <div className="bg-blue-50 border border-blue-100 rounded-xl px-4 py-3 text-sm text-blue-700">
-        <strong>Rendimiento real vs nominal:</strong> Una tasa del 40% anual suena alta, pero si
-        la inflación es del 60% anual, en realidad <em>perdés</em> poder adquisitivo.
-        Este simulador usa la <strong>ecuación de Fisher</strong> para mostrarte el rendimiento
-        real de tu inversión. Podés usar el botón de referencia para cargar la última inflación INDEC.
-      </div>
+      <GlosarioSimulador titulo="¿Cómo funciona este simulador?" terminos={GLOSARIO} />
 
       <SimuladorForm fields={FIELDS} onCalculate={calcular} />
 

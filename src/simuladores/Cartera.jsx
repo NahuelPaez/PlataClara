@@ -1,6 +1,12 @@
 import { useState } from 'react'
 import { formatARS, formatPct } from '../utils/formatters'
 import { descargarSimuladorCartera } from '../utils/excel'
+import GlosarioSimulador from '../components/GlosarioSimulador'
+
+const GLOSARIO = [
+  { term: '📊 Armá tu cartera', def: 'Distribuí el 100% de tu inversión entre distintos activos usando los sliders. El simulador calcula el rendimiento promedio ponderado y el nivel de riesgo de tu cartera combinada.' },
+  { term: '⚖️ Rendimiento ponderado', def: 'El rendimiento total de tu cartera es el promedio de cada activo pesado por su porcentaje de participación. Diversificar permite balancear riesgo y retorno.' },
+]
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell,
 } from 'recharts'
@@ -62,11 +68,7 @@ export default function Cartera() {
 
   return (
     <div className="space-y-6">
-      <div className="bg-blue-50 border border-blue-100 rounded-xl px-4 py-3 text-sm text-blue-700">
-        <strong>Armá tu cartera:</strong> Distribuí el 100% de tu inversión entre distintos
-        activos usando los sliders. El simulador calcula el rendimiento promedio ponderado
-        y el nivel de riesgo de tu cartera combinada.
-      </div>
+      <GlosarioSimulador titulo="¿Cómo funciona este simulador?" terminos={GLOSARIO} />
 
       {/* Sliders */}
       <div className="space-y-4">

@@ -2,7 +2,13 @@ import { useState } from 'react'
 import SimuladorForm from '../components/SimuladorForm'
 import SimuladorChart from '../components/SimuladorChart'
 import InflacionCheck from '../components/InflacionCheck'
+import GlosarioSimulador from '../components/GlosarioSimulador'
 import { calcularInteresCompuesto, formatARS, formatPct } from '../utils/formatters'
+
+const GLOSARIO = [
+  { term: '📈 El poder del interés compuesto', def: 'Al reinvertir los intereses período a período, tu dinero crece de forma exponencial. A mayor plazo, mayor es el efecto. Este simulador muestra cuánto de tu capital final viene de aportes propios y cuánto de los intereses generados.' },
+  { term: '🔄 Capitalización', def: 'Es el proceso de sumar los intereses ganados al capital para que en el siguiente período también generen intereses. Cuanto más frecuente es la capitalización, mayor es el rendimiento final.' },
+]
 
 const FIELDS_BASE = [
   { id: 'montoInicial',  label: 'Capital inicial',       type: 'number', unit: '$',   defaultValue: 100000, min: 0 },
@@ -56,12 +62,7 @@ export default function InteresCompuesto() {
 
   return (
     <div className="space-y-6">
-      <div className="bg-blue-50 border border-blue-100 rounded-xl px-4 py-3 text-sm text-blue-700">
-        <strong>El poder del interés compuesto:</strong> Al reinvertir los intereses período
-        a período, tu dinero crece de forma exponencial. A mayor plazo, mayor es el efecto.
-        Este simulador muestra cuánto de tu capital final viene de aportes propios
-        y cuánto de los intereses generados.
-      </div>
+      <GlosarioSimulador titulo="¿Cómo funciona este simulador?" terminos={GLOSARIO} />
 
       <SimuladorForm key={unidad} fields={fields} onCalculate={calcular} />
 

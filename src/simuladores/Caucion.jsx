@@ -13,6 +13,7 @@ const FIELDS = [
 ]
 
 const GLOSARIO = [
+  { term: '🤝 ¿Qué es una caución?', def: 'Es como un "plazo fijo de la bolsa". Prestás dinero a otros participantes del mercado a cambio de una tasa acordada. Está garantizada por la bolsa y los plazos van de 1 a 120 días. Necesitás cuenta en un broker (Invertir Online, Balanz, PPI, etc.).' },
   { term: '🤝 Caución bursátil', def: 'Operación del mercado de capitales donde prestás dinero a otro participante a cambio de una tasa pactada. Está garantizada por el BYMA (Bolsas y Mercados Argentinos), lo que la hace muy segura. Es el equivalente a un plazo fijo, pero dentro de la bolsa.' },
   { term: '📈 Tasa de caución colocadora', def: 'La tasa que te pagan por prestar tu dinero. Es variable y depende de la oferta y demanda del mercado. Generalmente es más alta que la de un plazo fijo bancario porque los tomadores son participantes institucionales.' },
   { term: '🏛️ Garantía del BYMA', def: 'A diferencia de un préstamo directo, la caución está garantizada por la cámara compensadora del mercado. Aunque el tomador no pague, el BYMA cubre la obligación. Por eso el riesgo es prácticamente nulo.' },
@@ -43,13 +44,6 @@ export default function Caucion() {
 
   return (
     <div className="space-y-6">
-      <div className="bg-blue-50 border border-blue-100 rounded-xl px-4 py-3 text-sm text-blue-700">
-        <strong>¿Qué es una caución?</strong> Es como un "plazo fijo de la bolsa". Prestás
-        dinero a otros participantes del mercado a cambio de una tasa acordada.
-        Está garantizada por la bolsa y los plazos van de 1 a 120 días.
-        Necesitás cuenta en un broker (Invertir Online, Balanz, PPI, etc.).
-      </div>
-
       <GlosarioSimulador titulo="Glosario: caución, tasa y garantía" terminos={GLOSARIO} />
 
       <SimuladorForm fields={FIELDS} onCalculate={calcular} />

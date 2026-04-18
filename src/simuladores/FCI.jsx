@@ -12,6 +12,7 @@ const FIELDS = [
 ]
 
 const GLOSARIO = [
+  { term: '🏦 ¿Qué es un FCI Money Market?', def: 'Los fondos money market invierten en instrumentos de muy corto plazo (plazos fijos, cauciones, letras). Tienen liquidez en T+0 o T+1 y suelen rendir un poco más que una cuenta remunerada. La tasa varía según el mercado.' },
   { term: '🏦 FCI Money Market', def: 'Fondo Común de Inversión que invierte en instrumentos de muy corto plazo: plazos fijos, cauciones bursátiles y letras del Tesoro. Son los FCI de menor riesgo y mayor liquidez.' },
   { term: '⚡ Liquidez T+0 / T+1', def: 'T+0 significa que podés rescatar tu inversión y tener el dinero disponible el mismo día. T+1 significa al día hábil siguiente. Los FCI money market suelen ofrecer una de estas dos opciones según el fondo.' },
   { term: '📄 Cuotapartes', def: 'Es la unidad de medida de tu participación en el fondo. Cuando invertís, comprás cuotapartes a un precio (valor de cuotaparte). Cada día ese valor sube según el rendimiento del fondo.' },
@@ -29,12 +30,6 @@ export default function FCI() {
 
   return (
     <div className="space-y-6">
-      <div className="bg-blue-50 border border-blue-100 rounded-xl px-4 py-3 text-sm text-blue-700">
-        <strong>FCI Money Market:</strong> Los fondos money market invierten en instrumentos de muy
-        corto plazo (plazos fijos, cauciones, letras). Tienen liquidez en T+0 o T+1 y suelen
-        rendir un poco más que una cuenta remunerada. La tasa varía según el mercado.
-      </div>
-
       <GlosarioSimulador titulo="Glosario: FCI, T+0/T+1 y cuotapartes" terminos={GLOSARIO} />
 
       <SimuladorForm fields={FIELDS} onCalculate={calcular} />

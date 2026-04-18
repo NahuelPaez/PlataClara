@@ -12,6 +12,7 @@ const FIELDS = [
 ]
 
 const GLOSARIO = [
+  { term: '💡 ¿Cómo funciona?', def: 'Una cuenta remunerada acredita intereses diariamente sobre el saldo disponible. No requiere inmovilizar el dinero — podés retirarlo cuando quieras.' },
   { term: '📊 TNA (Tasa Nominal Anual)', def: 'Es la tasa de interés expresada en términos anuales sin considerar la capitalización. Por ejemplo, una TNA del 42% significa que si dejás el dinero un año completo ganás aproximadamente un 42% bruto sobre tu capital.' },
   { term: '📈 TEA (Tasa Efectiva Anual)', def: 'Es la tasa real que ganás en el año, considerando que los intereses se acreditan y reinvierten día a día. Siempre es mayor que la TNA cuando hay capitalización diaria.' },
   { term: '🔄 Acreditación diaria', def: 'Las cuentas remuneradas acreditan los intereses todos los días sobre el saldo disponible. Esto significa que los intereses del día anterior también generan intereses al día siguiente (capitalización compuesta).' },
@@ -31,11 +32,6 @@ export default function CuentaRemunerada() {
 
   return (
     <div className="space-y-6">
-      <div className="bg-blue-50 border border-blue-100 rounded-xl px-4 py-3 text-sm text-blue-700">
-        <strong>¿Cómo funciona?</strong> Una cuenta remunerada acredita intereses diariamente
-        sobre el saldo disponible. No requiere inmovilizar el dinero — podés retirarlo cuando quieras.
-      </div>
-
       <GlosarioSimulador titulo="Glosario: TNA, TEA y acreditación diaria" terminos={GLOSARIO} />
 
       <SimuladorForm fields={FIELDS} onCalculate={calcular} />
