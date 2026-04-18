@@ -183,26 +183,63 @@ async function fetchDolarBancos() {
   // ── Santander ──
   try {
     const page = await context.newPage()
+    let santanderVenta = null
+
+    // Interceptar respuestas JSON antes de navegar
+    const responsePromises = []
+    page.on('response', (response) => {
+      if (santanderVenta) return
+      const url = response.url()
+      const ct = response.headers()['content-type'] || ''
+      if (!ct.includes('json')) return
+      if (url.includes('cotiz') || url.includes('exchange') || url.includes('divisa') || url.includes('moneda') || url.includes('dolar') || url.includes('currency')) {
+        responsePromises.push(
+          response.json().then(body => {
+            const text = JSON.stringify(body)
+            const match = text.match(/"(?:venta|sell|ventaBilletes|precioVenta)"\s*:\s*(1[0-9]{3,4}(?:\.[0-9]+)?)/)
+            if (match && !santanderVenta) santanderVenta = match[1]
+          }).catch(() => {})
+        )
+      }
+    })
+
     await page.goto(
       'https://www.santander.com.ar/personas/productos/inversiones/cotizacion-moneda-extranjera.html',
-      { waitUntil: 'domcontentloaded', timeout: 25000 }
-    )
-    const rawVenta = await page.evaluate(() => {
-      const tables = Array.from(document.querySelectorAll('table'))
-      for (const table of tables) {
-        const rows = Array.from(table.querySelectorAll('tr'))
-        for (const row of rows) {
-          const cells = Array.from(row.querySelectorAll('td'))
-          if (cells.length < 2) continue
-          const label = cells[0].textContent.trim().toLowerCase()
-          if (label.includes('dólar') || label.includes('dolar') || label.includes('usd')) {
-            return cells[2]?.textContent?.trim() ?? cells[1]?.textContent?.trim() ?? null
+      { waitUntil: 'load', timeout: 30000 }
+    ).catch(() => {})
+
+    // Esperar que las respuestas JSON se procesen
+    if (responsePromises.length) await Promise.allSettled(responsePromises)
+
+    // Fallback: leer el DOM después de que cargó
+    if (!santanderVenta) {
+      santanderVenta = await page.evaluate(() => {
+        const tables = Array.from(document.querySelectorAll('table'))
+        for (const table of tables) {
+          for (const row of table.querySelectorAll('tr')) {
+            const cells = Array.from(row.querySelectorAll('td'))
+            if (cells.length < 2) continue
+            const label = cells[0].textContent.trim().toLowerCase()
+            if (label.includes('dólar') || label.includes('dolar') || label.includes('usd')) {
+              return cells[2]?.textContent?.trim() ?? cells[1]?.textContent?.trim() ?? null
+            }
           }
         }
-      }
-      return null
-    })
-    const precio = parseAR(rawVenta)
+        // Buscar en líneas de texto plano
+        const lines = document.body.innerText.split('\n').map(l => l.trim()).filter(Boolean)
+        for (let i = 0; i < lines.length; i++) {
+          if (lines[i].toLowerCase().includes('dólar') || lines[i].toLowerCase().includes('dolar')) {
+            for (let j = i + 1; j < Math.min(i + 6, lines.length); j++) {
+              const m = lines[j].match(/^(1[.,]\d{3}(?:[.,]\d{2})?)$/)
+              if (m) return m[1]
+            }
+          }
+        }
+        return null
+      }).catch(() => null)
+    }
+
+    const precio = parseAR(santanderVenta)
     if (precio) {
       resultado['santander'] = precio
       console.log(`   ✅ Santander dólar venta: $${precio}`)
@@ -215,28 +252,60 @@ async function fetchDolarBancos() {
   }
 
   // ── BBVA ──
+  // Espera networkidle para que el SPA renderice la tabla
   try {
     const page = await context.newPage()
+    let bbvaVenta = null
+
+    page.on('response', async (response) => {
+      if (bbvaVenta) return
+      const url = response.url()
+      const ct = response.headers()['content-type'] || ''
+      if (!ct.includes('json')) return
+      if (url.includes('cotiz') || url.includes('exchange') || url.includes('divisa') || url.includes('moneda') || url.includes('dolar') || url.includes('currency')) {
+        try {
+          const body = await response.json()
+          const text = JSON.stringify(body)
+          const match = text.match(/"(?:venta|sell|ventaBilletes|precioVenta)"\s*:\s*(1[0-9]{3,4}(?:\.[0-9]+)?)/)
+          if (match) bbvaVenta = match[1]
+        } catch {}
+      }
+    })
+
     await page.goto(
       'https://www.bbva.com.ar/personas/productos/inversiones/cotizacion-moneda-extranjera.html',
-      { waitUntil: 'domcontentloaded', timeout: 25000 }
-    )
-    const rawVenta = await page.evaluate(() => {
-      const tables = Array.from(document.querySelectorAll('table'))
-      for (const table of tables) {
-        const rows = Array.from(table.querySelectorAll('tr'))
-        for (const row of rows) {
-          const cells = Array.from(row.querySelectorAll('td'))
-          if (cells.length < 2) continue
-          const label = cells[0].textContent.trim().toLowerCase()
-          if (label.includes('dólar') || label.includes('dolar') || label.includes('usd')) {
-            return cells[2]?.textContent?.trim() ?? cells[1]?.textContent?.trim() ?? null
+      { waitUntil: 'networkidle', timeout: 30000 }
+    ).catch(() => {})
+
+    if (!bbvaVenta) {
+      bbvaVenta = await page.evaluate(() => {
+        const tables = Array.from(document.querySelectorAll('table'))
+        for (const table of tables) {
+          for (const row of table.querySelectorAll('tr')) {
+            const cells = Array.from(row.querySelectorAll('td'))
+            if (cells.length < 2) continue
+            const label = cells[0].textContent.trim().toLowerCase()
+            if (label.includes('dólar') || label.includes('dolar') || label.includes('usd') || label.includes('dolares')) {
+              return cells[2]?.textContent?.trim() ?? cells[1]?.textContent?.trim() ?? null
+            }
           }
         }
-      }
-      return null
-    })
-    const precio = parseAR(rawVenta)
+        // Buscar también en elementos no-tabla
+        const allText = document.body.innerText
+        const lines = allText.split('\n').map(l => l.trim()).filter(Boolean)
+        for (let i = 0; i < lines.length; i++) {
+          if (lines[i].toLowerCase().includes('dólar') || lines[i].toLowerCase().includes('dolar')) {
+            for (let j = i; j < Math.min(i + 5, lines.length); j++) {
+              const m = lines[j].match(/^(1[.,]\d{3}(?:[.,]\d{2})?)$/)
+              if (m) return m[1]
+            }
+          }
+        }
+        return null
+      })
+    }
+
+    const precio = parseAR(bbvaVenta)
     if (precio) {
       resultado['bbva'] = precio
       console.log(`   ✅ BBVA dólar venta: $${precio}`)
