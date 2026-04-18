@@ -295,20 +295,20 @@ export default function Hero() {
       <div className="absolute -bottom-32 -left-32 w-80 h-80 rounded-full opacity-10 pointer-events-none"
            style={{ background: '#10b981' }} />
 
-      <div className="relative max-w-6xl mx-auto px-4 pt-6 pb-8 md:pt-8 md:pb-10">
+      <div className="relative max-w-6xl mx-auto px-4 pt-4 pb-6 md:pt-5 md:pb-7">
         <div className="flex items-center gap-4 md:gap-8">
 
           <div className="flex-1 min-w-0 flex flex-col justify-center pb-4">
-            <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm text-white text-xs font-medium px-3 py-1 rounded-full mb-4 self-start">
+            <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm text-white text-xs font-medium px-3 py-1 rounded-full mb-2 self-start">
               <span>🇦🇷</span>
               <span>Finanzas personales en argentino</span>
             </div>
-            <h1 className="text-3xl md:text-5xl font-extrabold text-white leading-tight mb-4">
+            <h1 className="text-3xl md:text-5xl font-extrabold text-white leading-tight mb-2">
               Tu plata,{' '}
               <span className="text-amber-300">más clara</span>{' '}
               que nunca.
             </h1>
-            <p className="text-base md:text-lg text-white/80 max-w-xl mb-7 leading-relaxed">
+            <p className="text-base md:text-lg text-white/80 max-w-xl mb-3 leading-relaxed">
               Aprendé qué es cada instrumento financiero, simulá cuánto podés ganar
               y comparás las tasas de los principales bancos y billeteras de Argentina.
               <span className="relative inline-block">
