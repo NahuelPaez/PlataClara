@@ -56,7 +56,7 @@ export default function Simuladores() {
           </p>
           <h2 className="section-title">Calculá cuánto podés ganar</h2>
           <p className="section-subtitle">
-            Ingresá tu monto y plazo para ver el rendimiento esperado con gráficos.
+            Calculá cuánto podés ganar con cada producto de inversión.
           </p>
         </div>
 
