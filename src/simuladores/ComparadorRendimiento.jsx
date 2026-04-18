@@ -36,9 +36,12 @@ export default function ComparadorRendimiento() {
   const [resultados, setResultados] = useState([])
   const [otrosLive, setOtrosLive]   = useState({})  // liquidez inmediata
   const [pfLive, setPfLive]         = useState({})  // plazo fijo 30d
-  const [liveTs, setLiveTs]         = useState(null)
-  const [dolarData, setDolarData]   = useState([])  // cotización USD por entidad
-  const [dolarLoading, setDolarLoading] = useState(false)
+
+  // Dólar oficial por banco — leído de tasas.json, actualizado por cron diario
+  const dolarResultados = tasasData.entidades
+    .filter(e => e.dolar_oficial_venta != null)
+    .map(e => ({ nombre: e.nombre, emoji: e.emoji, venta: e.dolar_oficial_venta }))
+    .sort((a, b) => a.venta - b.venta)
 
   // Fetch tasas en vivo desde argentinadatos
   useEffect(() => {
@@ -77,7 +80,6 @@ export default function ComparadorRendimiento() {
           const u = ultimo.find(d => d.fondo === nombre)
           const p = penultimo.find(d => d.fondo === nombre)
           if (u?.vcp && p?.vcp && p.vcp > 0) {
-            // Misma fórmula que comparatasas: TNA lineal con días reales
             const days = u.fecha && p.fecha
               ? Math.max(1, Math.round(Math.abs(new Date(u.fecha) - new Date(p.fecha)) / 86400000))
               : 1
@@ -108,25 +110,8 @@ export default function ComparadorRendimiento() {
     Promise.all([fetchOtros, fetchMD, fetchPF]).then(([otros, mdinero, pf]) => {
       setOtrosLive({ ...otros, ...mdinero })
       setPfLive(pf)
-      setLiveTs(new Date())
     })
   }, [])
-
-  // Fetch cotización dólar cuando se selecciona esa pestaña
-  useEffect(() => {
-    if (productoId !== 'dolar_oficial') return
-    setDolarLoading(true)
-    fetch('https://dolarapi.com/v1/dolares')
-      .then(r => r.json())
-      .then(data => {
-        const filtrados = data
-          .filter(d => d.venta > 0)
-          .sort((a, b) => a.venta - b.venta)
-        setDolarData(filtrados)
-      })
-      .catch(() => {})
-      .finally(() => setDolarLoading(false))
-  }, [productoId])
 
   function handleMontoChange(raw) {
     const digits = raw.replace(/[^\d]/g, '')
@@ -144,13 +129,8 @@ export default function ComparadorRendimiento() {
       let notas = ''
 
       if (productoIdActual === 'cuenta_remunerada') {
-        // 1. Tasa live del API si está disponible para esta entidad
         const liveTna = otrosLive[entidad.id]
-
-        // 2. Cuenta remunerada del JSON (lo que el usuario ve al abrir la app)
         const cr = entidad.productos.find(p => p.id === 'cuenta_remunerada')
-
-        // 3. FCI MM con T+0, solo para entidades SIN cuenta remunerada propia
         const fciT0 = !cr
           ? entidad.productos.find(p =>
               p.id === 'fci_mm' &&
@@ -159,20 +139,16 @@ export default function ComparadorRendimiento() {
           : null
 
         if (liveTna) {
-          // API live disponible → usarla
           tna   = liveTna
           notas = cr?.notas || ''
         } else if (cr) {
-          // Sin API live: usar cuenta remunerada del JSON
           tna   = cr.tna
           notas = cr.notas
         } else if (fciT0) {
-          // Banco sin CR pero con FCI T+0 (Galicia, BBVA, Santander)
           tna   = fciT0.tna
           notas = ''
         }
       } else if (productoIdActual === 'plazo_fijo_30') {
-        // Tasa live BCRA si disponible, sino JSON
         const liveTna = pfLive[entidad.id]
         const p = entidad.productos.find(p => p.id === 'plazo_fijo_30')
         if (liveTna) {
@@ -211,11 +187,6 @@ export default function ComparadorRendimiento() {
 
   useEffect(() => { calcular() }, [productoId, monto, otrosLive, pfLive])
 
-  const prodActual = PRODUCTOS_DISPONIBLES.find(p => p.id === productoId)
-  const prodLabel  = prodActual?.label
-  const hayLive    = (productoId === 'cuenta_remunerada' && Object.keys(otrosLive).length > 0)
-                  || (productoId === 'plazo_fijo_30'     && Object.keys(pfLive).length > 0)
-
   return (
     <div className="space-y-6">
 
@@ -253,10 +224,8 @@ export default function ComparadorRendimiento() {
 
       <div>
         {productoId === 'dolar_oficial' ? (
-          dolarLoading ? (
-            <p className="text-slate-400 text-sm text-center py-6">Cargando cotizaciones...</p>
-          ) : dolarData.length === 0 ? (
-            <p className="text-slate-400 text-sm text-center py-6">No se pudieron cargar las cotizaciones.</p>
+          dolarResultados.length === 0 ? (
+            <p className="text-slate-400 text-sm text-center py-6">Cotizaciones próximamente — datos actualizados por banco, lunes a viernes.</p>
           ) : (
             <>
               <div className="overflow-x-auto rounded-2xl border border-slate-100 shadow-sm">
@@ -269,19 +238,23 @@ export default function ComparadorRendimiento() {
                     </tr>
                   </thead>
                   <tbody>
-                    {dolarData.map((d, i) => (
-                      <tr key={d.casa} className={`border-t border-slate-50 ${i < 3 ? 'bg-primary-50/40' : 'hover:bg-slate-50'} transition-colors`}>
+                    {dolarResultados.map((d, i) => (
+                      <tr key={d.nombre} className={`border-t border-slate-50 ${i < 3 ? 'bg-primary-50/40' : 'hover:bg-slate-50'} transition-colors`}>
                         <td className="px-4 py-3 font-bold text-slate-400">
                           {i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : i + 1}
                         </td>
-                        <td className="px-4 py-3 font-medium text-slate-800 capitalize">{d.nombre}</td>
-                        <td className="px-4 py-3 text-right font-bold text-primary-600">${d.venta.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                        <td className="px-4 py-3 font-medium text-slate-800">
+                          <span className="mr-2">{d.emoji}</span>{d.nombre}
+                        </td>
+                        <td className="px-4 py-3 text-right font-bold text-primary-600">
+                          ${d.venta.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                        </td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
               </div>
-              <p className="text-xs text-slate-400 mt-3 text-center">Cotizaciones en tiempo real · Ordenadas de menor a mayor precio de venta.</p>
+              <p className="text-xs text-slate-400 mt-3 text-center">Precios de venta al público · Actualizados lunes a viernes · Verificá antes de operar.</p>
             </>
           )
         ) : resultados.length === 0 ? (

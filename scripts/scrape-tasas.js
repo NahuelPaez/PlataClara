@@ -129,8 +129,191 @@ function extraerArrays(obj, depth = 0) {
   return []
 }
 
+// ─── Fuente 3: Precios dólar oficial por banco (Playwright) ──────────────────
+async function fetchDolarBancos() {
+  console.log('📥 Scrapeando precios dólar oficial por banco...')
+  const browser = await chromium.launch({ headless: true })
+  const context = await browser.newContext({
+    userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+  })
+
+  const resultado = {} // { [id]: venta }
+
+  // Parsea formato argentino: "1.080,50" → 1080.50
+  function parseAR(s) {
+    if (!s) return null
+    const clean = String(s).replace(/\./g, '').replace(',', '.').replace(/[^\d.]/g, '')
+    const n = parseFloat(clean)
+    return n > 100 && n < 100000 ? Math.round(n * 100) / 100 : null
+  }
+
+  // ── BNA ──
+  try {
+    const page = await context.newPage()
+    await page.goto('https://www.bna.com.ar', { waitUntil: 'domcontentloaded', timeout: 25000 })
+    const rawVenta = await page.evaluate(() => {
+      // BNA tiene una tabla .cotizacion o similar con filas de monedas
+      const tables = Array.from(document.querySelectorAll('table'))
+      for (const table of tables) {
+        const rows = Array.from(table.querySelectorAll('tr'))
+        for (const row of rows) {
+          const cells = Array.from(row.querySelectorAll('td'))
+          if (cells.length < 2) continue
+          const label = cells[0].textContent.trim().toLowerCase()
+          if (label.includes('dólar') || label.includes('dolar') || label.includes('u.s.a')) {
+            // Compra = cells[1], Venta = cells[2]
+            return cells[2]?.textContent?.trim() ?? cells[1]?.textContent?.trim() ?? null
+          }
+        }
+      }
+      return null
+    })
+    const precio = parseAR(rawVenta)
+    if (precio) {
+      resultado['nacion'] = precio
+      console.log(`   ✅ BNA dólar venta: $${precio}`)
+    } else {
+      console.log('   ⚠️  BNA: no se encontró el precio del dólar')
+    }
+    await page.close()
+  } catch (e) {
+    console.log(`   ⚠️  BNA: ${e.message}`)
+  }
+
+  // ── Santander ──
+  try {
+    const page = await context.newPage()
+    await page.goto(
+      'https://www.santander.com.ar/personas/productos/inversiones/cotizacion-moneda-extranjera.html',
+      { waitUntil: 'domcontentloaded', timeout: 25000 }
+    )
+    const rawVenta = await page.evaluate(() => {
+      const tables = Array.from(document.querySelectorAll('table'))
+      for (const table of tables) {
+        const rows = Array.from(table.querySelectorAll('tr'))
+        for (const row of rows) {
+          const cells = Array.from(row.querySelectorAll('td'))
+          if (cells.length < 2) continue
+          const label = cells[0].textContent.trim().toLowerCase()
+          if (label.includes('dólar') || label.includes('dolar') || label.includes('usd')) {
+            return cells[2]?.textContent?.trim() ?? cells[1]?.textContent?.trim() ?? null
+          }
+        }
+      }
+      return null
+    })
+    const precio = parseAR(rawVenta)
+    if (precio) {
+      resultado['santander'] = precio
+      console.log(`   ✅ Santander dólar venta: $${precio}`)
+    } else {
+      console.log('   ⚠️  Santander: no se encontró el precio del dólar')
+    }
+    await page.close()
+  } catch (e) {
+    console.log(`   ⚠️  Santander: ${e.message}`)
+  }
+
+  // ── BBVA ──
+  try {
+    const page = await context.newPage()
+    await page.goto(
+      'https://www.bbva.com.ar/personas/productos/inversiones/cotizacion-moneda-extranjera.html',
+      { waitUntil: 'domcontentloaded', timeout: 25000 }
+    )
+    const rawVenta = await page.evaluate(() => {
+      const tables = Array.from(document.querySelectorAll('table'))
+      for (const table of tables) {
+        const rows = Array.from(table.querySelectorAll('tr'))
+        for (const row of rows) {
+          const cells = Array.from(row.querySelectorAll('td'))
+          if (cells.length < 2) continue
+          const label = cells[0].textContent.trim().toLowerCase()
+          if (label.includes('dólar') || label.includes('dolar') || label.includes('usd')) {
+            return cells[2]?.textContent?.trim() ?? cells[1]?.textContent?.trim() ?? null
+          }
+        }
+      }
+      return null
+    })
+    const precio = parseAR(rawVenta)
+    if (precio) {
+      resultado['bbva'] = precio
+      console.log(`   ✅ BBVA dólar venta: $${precio}`)
+    } else {
+      console.log('   ⚠️  BBVA: no se encontró el precio del dólar')
+    }
+    await page.close()
+  } catch (e) {
+    console.log(`   ⚠️  BBVA: ${e.message}`)
+  }
+
+  // ── Galicia ──
+  // Galicia es un SPA — intentamos capturar una respuesta de API interna
+  try {
+    const page = await context.newPage()
+    let galiciaVenta = null
+
+    page.on('response', async (response) => {
+      const url = response.url()
+      if (galiciaVenta) return
+      if (
+        (url.includes('cotizacion') || url.includes('exchange') || url.includes('tipo-cambio') || url.includes('dolar'))
+        && response.headers()['content-type']?.includes('json')
+      ) {
+        try {
+          const body = await response.json()
+          const text = JSON.stringify(body)
+          const match = text.match(/"venta"\s*:\s*([\d.,]+)/)
+          if (match) galiciaVenta = match[1]
+        } catch {}
+      }
+    })
+
+    await page.goto('https://www.bancogalicia.com/cotizaciones', {
+      waitUntil: 'domcontentloaded', timeout: 20000
+    })
+    await page.waitForTimeout(3000)
+
+    // Fallback: buscar en el DOM
+    if (!galiciaVenta) {
+      galiciaVenta = await page.evaluate(() => {
+        const tables = Array.from(document.querySelectorAll('table'))
+        for (const table of tables) {
+          const rows = Array.from(table.querySelectorAll('tr'))
+          for (const row of rows) {
+            const cells = Array.from(row.querySelectorAll('td'))
+            if (cells.length < 2) continue
+            const label = cells[0].textContent.trim().toLowerCase()
+            if (label.includes('dólar') || label.includes('dolar') || label.includes('usd')) {
+              return cells[2]?.textContent?.trim() ?? cells[1]?.textContent?.trim() ?? null
+            }
+          }
+        }
+        return null
+      })
+    }
+
+    const precio = parseAR(galiciaVenta)
+    if (precio) {
+      resultado['galicia'] = precio
+      console.log(`   ✅ Galicia dólar venta: $${precio}`)
+    } else {
+      console.log('   ⚠️  Galicia: no se encontró el precio del dólar (app-only)')
+    }
+    await page.close()
+  } catch (e) {
+    console.log(`   ⚠️  Galicia: ${e.message}`)
+  }
+
+  // Nota: Ualá y Brubank solo exponen precios desde sus apps móviles — se omiten
+  console.log(`   → ${Object.keys(resultado).length} banco(s) con precio dólar scraped`)
+  await browser.close()
+  return resultado
+}
+
 // ─── Actualizar tasas.json ────────────────────────────────────────────────────
-function actualizarJson(tasasBancos, tasasBilleteras) {
+function actualizarJson(tasasBancos, tasasBilleteras, dolarBancos) {
   const json = JSON.parse(readFileSync(TASAS_PATH, 'utf-8'))
   let actualizados = 0
 
@@ -159,6 +342,16 @@ function actualizarJson(tasasBancos, tasasBilleteras) {
         actualizados++
       }
     }
+
+    // Dólar oficial por banco
+    const dolarVenta = dolarBancos[entidad.id]
+    if (dolarVenta !== undefined) {
+      if (entidad.dolar_oficial_venta !== dolarVenta) {
+        console.log(`  📝 ${entidad.nombre} / dólar oficial venta: ${entidad.dolar_oficial_venta} → $${dolarVenta}`)
+        entidad.dolar_oficial_venta = dolarVenta
+        actualizados++
+      }
+    }
   }
 
   const hoy = new Date().toISOString().split('T')[0]
@@ -170,11 +363,12 @@ function actualizarJson(tasasBancos, tasasBilleteras) {
 // ─── Main ─────────────────────────────────────────────────────────────────────
 async function main() {
   console.log('🚀 Actualizando tasas...\n')
-  const [tasasBancos, tasasBilleteras] = await Promise.all([
+  const [tasasBancos, tasasBilleteras, dolarBancos] = await Promise.all([
     fetchTasasPlazofijo(),
     fetchTasasBilleteras(),
+    fetchDolarBancos(),
   ])
-  actualizarJson(tasasBancos, tasasBilleteras)
+  actualizarJson(tasasBancos, tasasBilleteras, dolarBancos)
 }
 
 main().catch(err => {

@@ -35,6 +35,7 @@
       "nombre": "Ualá",
       "tipo": "billetera",
       "emoji": "🟣",
+      "dolar_oficial_venta": null,
       "productos": [
         {
           "id": "cuenta_remunerada",
@@ -83,6 +84,7 @@
       "nombre": "Brubank",
       "tipo": "banco",
       "emoji": "🔵",
+      "dolar_oficial_venta": null,
       "productos": [
         {
           "id": "plazo_fijo_30",
@@ -224,6 +226,7 @@
       "nombre": "Banco Nación",
       "tipo": "banco",
       "emoji": "🏛️",
+      "dolar_oficial_venta": null,
       "productos": [
         {
           "id": "plazo_fijo_30",
@@ -282,6 +285,7 @@
       "nombre": "Galicia",
       "tipo": "banco",
       "emoji": "🔴",
+      "dolar_oficial_venta": null,
       "productos": [
         {
           "id": "plazo_fijo_30",
@@ -340,6 +344,7 @@
       "nombre": "BBVA",
       "tipo": "banco",
       "emoji": "🔷",
+      "dolar_oficial_venta": null,
       "productos": [
         {
           "id": "plazo_fijo_30",
@@ -398,6 +403,7 @@
       "nombre": "Santander",
       "tipo": "banco",
       "emoji": "🔴",
+      "dolar_oficial_venta": null,
       "productos": [
         {
           "id": "plazo_fijo_30",
