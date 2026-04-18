@@ -8,10 +8,9 @@ export default function DondeRindeMas() {
           <p className="text-xs font-semibold text-primary-500 uppercase tracking-widest mb-1">
             Comparador
           </p>
-          <h2 className="section-title">¿Dónde rinde más tu plata?</h2>
+          <h2 className="section-title">Tasas y cotización USD oficial</h2>
           <p className="section-subtitle">
-            Ingresá un monto, elegí el tipo de producto y compará cuánto ganarías
-            en cada banco y billetera, ordenado de mayor a menor rendimiento.
+            Compará tasas de bancos y billeteras, y el precio del dólar oficial en cada entidad.
           </p>
         </div>
 

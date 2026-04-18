@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 
 const ACCESOS = [
-  { label: '📊 Comparar Tasas',       href: '#donde-rinde-mas', desc: 'Quién paga más'        },
+  { label: '📊 Tasas y USD',           href: '#donde-rinde-mas', desc: 'Tasas y dólar oficial' },
   { label: '🧮 Simuladores',          href: '#simuladores',     desc: 'Calculá rendimientos'  },
   { label: '📚 Educación Financiera', href: '#educacion',       desc: 'Qué es cada producto'  },
   { label: '📥 Descargar Excel',      href: '#descargables',    desc: 'Planillas gratis'      },

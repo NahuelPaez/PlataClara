@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 const LINKS = [
-  { label: '¿Dónde rinde más mi plata?',  href: '#donde-rinde-mas' },
+  { label: 'Tasas y cotización USD',  href: '#donde-rinde-mas' },
   { label: 'Simuladores',                 href: '#simuladores'     },
   { label: '¿Cómo funciona cada producto?', href: '#educacion'     },
   { label: 'Plantillas Excel',            href: '#descargables'    },
