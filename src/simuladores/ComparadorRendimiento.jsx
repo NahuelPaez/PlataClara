@@ -145,7 +145,7 @@ export default function ComparadorRendimiento() {
           notas = cr.notas
         } else if (fciT0) {
           tna   = fciT0.tna
-          notas = ''
+          notas = fciT0.notas || ''
         }
       } else if (productoIdActual === 'plazo_fijo_30') {
         const liveTna = pfLive[entidad.id]
