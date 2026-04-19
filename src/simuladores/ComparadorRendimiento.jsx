@@ -139,7 +139,7 @@ export default function ComparadorRendimiento() {
 
         if (liveTna) {
           tna   = liveTna
-          notas = cr?.notas || ''
+          notas = cr?.notas || fciT0?.notas || ''
         } else if (cr) {
           tna   = cr.tna
           notas = cr.notas
