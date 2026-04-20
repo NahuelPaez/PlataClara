@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-18",
+  "lastUpdated": "2026-04-20",
   "nota": "Tasas referenciales actualizadas manualmente. Verificar en el sitio oficial de cada entidad antes de operar.",
   "entidades": [
     {
@@ -196,7 +196,7 @@
       "nombre": "Banco Nación",
       "tipo": "banco",
       "emoji": "🏛️",
-      "dolar_oficial_venta": 1390,
+      "dolar_oficial_venta": 1395,
       "productos": [
         {
           "id": "plazo_fijo_30",
@@ -314,7 +314,7 @@
       "nombre": "BBVA",
       "tipo": "banco",
       "emoji": "🔷",
-      "dolar_oficial_venta": 1390,
+      "dolar_oficial_venta": 1395,
       "productos": [
         {
           "id": "plazo_fijo_30",
