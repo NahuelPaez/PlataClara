@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-22",
+  "lastUpdated": "2026-04-23",
   "nota": "Tasas referenciales actualizadas manualmente. Verificar en el sitio oficial de cada entidad antes de operar.",
   "entidades": [
     {
@@ -196,7 +196,7 @@
       "nombre": "Banco Nación",
       "tipo": "banco",
       "emoji": "🏛️",
-      "dolar_oficial_venta": 1400,
+      "dolar_oficial_venta": 1405,
       "productos": [
         {
           "id": "plazo_fijo_30",
@@ -314,7 +314,7 @@
       "nombre": "BBVA",
       "tipo": "banco",
       "emoji": "🔷",
-      "dolar_oficial_venta": 1400,
+      "dolar_oficial_venta": 1405,
       "productos": [
         {
           "id": "plazo_fijo_30",
@@ -378,7 +378,7 @@
         {
           "id": "plazo_fijo_30",
           "nombre": "Plazo Fijo 30 días",
-          "tna": 16.5,
+          "tna": 15,
           "tea": null,
           "moneda": "ARS",
           "plazo_min": 30,
@@ -388,7 +388,7 @@
         {
           "id": "plazo_fijo_60",
           "nombre": "Plazo Fijo 60 días",
-          "tna": 16.5,
+          "tna": 15,
           "tea": null,
           "moneda": "ARS",
           "plazo_min": 60,
